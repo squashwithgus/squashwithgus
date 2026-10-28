@@ -109,10 +109,19 @@
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>Coaching Facilities: <span class="text-gray-200 font-medium">Sports4You! Sendling</span> & <span class="text-gray-200 font-medium">Park Club Nymphenburg</span></span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Language Switcher Pill -->
+                <div class="flex items-center bg-gray-900 border border-gray-700 rounded px-1.5 py-0.5 text-[11px] font-mono">
+                    <span class="px-1.5 py-0.2 text-squash-neon font-bold bg-gray-800 rounded">EN</span>
+                    <span class="text-gray-600">|</span>
+                    <a href="de.html" class="px-1.5 py-0.2 text-gray-400 hover:text-white transition-colors" title="Auf Deutsch wechseln">DE</a>
+                </div>
+
+                <span class="hidden sm:inline text-gray-700">|</span>
+
                 <button id="sound-toggle" onclick="toggleAudio()" class="hover:text-squash-neon transition-colors flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-mono">
                     <i id="sound-icon" class="fas fa-volume-up text-squash-neon"></i>
-                    <span id="sound-label">Court Telemetry: ON</span>
+                    <span id="sound-label" class="hidden sm:inline">Court Telemetry: ON</span>
                 </button>
                 <span class="hidden sm:inline text-gray-700">|</span>
                 <span class="hidden sm:inline text-gray-400 font-mono text-[11px]">Munich, Bavaria</span>
@@ -146,13 +155,25 @@
                     <a href="#quiz" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Diagnostics</a>
                     <a href="#testimonials" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Testimonials</a>
                     <a href="#faq" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">FAQ</a>
+                    
+                    <!-- Language selector in nav -->
+                    <div class="flex items-center border border-gray-700 rounded-lg overflow-hidden bg-gray-900 text-xs font-mono font-bold">
+                        <span class="px-2.5 py-1 bg-squash-neon text-gray-950 font-black">EN</span>
+                        <span class="w-[1px] h-4 bg-gray-700"></span>
+                        <a href="de.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="Deutsch">DE</a>
+                    </div>
+
                     <button onclick="openBookingModal('Introductory Trial')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
                         Apply for Trial
                     </button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="md:hidden flex items-center gap-2">
+                    <div class="flex items-center border border-gray-700 rounded bg-gray-900 text-xs font-mono">
+                        <span class="px-2 py-0.5 bg-squash-neon text-gray-950 font-bold">EN</span>
+                        <a href="de.html" class="px-2 py-0.5 text-gray-400">DE</a>
+                    </div>
                     <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white p-2">
                         <i class="fas fa-bars text-lg" id="mobile-icon"></i>
                     </button>

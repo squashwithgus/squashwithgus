@@ -16,6 +16,7 @@
 ---
 
 ## 🚀 Features & Easter Eggs
+- **Bilingual Experience (EN & DE):** Full English (`index.html`) and German (`de.html`) versions featuring seamless language switching in the header and announcement bar, complete with Gus's authentic dry Bavarian-Spanish voice and localized technical dispatches.
 - **Photorealistic Coach Portraits:** High-resolution 35mm editorial sports portraits of Gus inside a glass-back squash court with authentic documentary texture, lighting, and posture.
 - **The Coach's Journal (Cuaderno de Pista):** In-depth technical blog and dispatches based directly on Gus's backstory (geometry of the straight rail, 2008 Barcelona ACL tear autopsy, scouting analysis of his estranged son Mateo, and post-match Paulaner Spezi protocols).
 - **Progressive Depth & Irony Architecture:** Serious, authoritative, prestigious European coaching landing page that progressively reveals Gus's hilarious purist obsessions, family feud, and secret burner surveillance as visitors engage more deeply.
@@ -30,7 +31,8 @@
 
 ## 📁 Repository Structure
 ```
-├── index.html          # Main landing page & interactive dispatches
+├── index.html          # Main landing page & interactive dispatches (English)
+├── de.html             # German version (Deutsche Version)
 ├── backstory.txt       # Core profile, athletic heritage, and narrative backstory
 ├── assets/
 │   ├── gus-portrait.jpg# Photorealistic portrait of Coach Gus
