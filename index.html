@@ -1375,6 +1375,9 @@
         }
 
         // Booking Modal Handlers
+        // Google Sheets Integration (Paste your Google Apps Script Web App URL below)
+        const GOOGLE_SHEETS_WEBHOOK_URL = '';
+
         function openBookingModal(tier) {
             playSquashSound('thwack');
             document.getElementById('modal-title').innerText = tier;
@@ -1386,12 +1389,16 @@
             document.getElementById('booking-modal').classList.add('hidden');
         }
 
-        function handleBookingSubmit(event) {
+        async function handleBookingSubmit(event) {
             event.preventDefault();
             const padelVal = document.getElementById('padel-check').value;
             const levelVal = document.getElementById('squash-level').value;
             const feedback = document.getElementById('booking-feedback');
             const submitBtn = document.getElementById('submit-booking-btn');
+            const tierVal = document.getElementById('modal-title').innerText;
+            const nameVal = document.getElementById('applicant-name').value;
+            const emailVal = document.getElementById('applicant-email').value;
+            const notesVal = document.getElementById('applicant-notes').value;
 
             feedback.classList.remove('hidden');
 
@@ -1413,6 +1420,29 @@
                     "I do not teach beginners how to grip a racket. Go hit against the wall for six months, then return."
                 `;
                 return;
+            }
+
+            // Send to Google Sheets if webhook URL is configured
+            if (GOOGLE_SHEETS_WEBHOOK_URL && GOOGLE_SHEETS_WEBHOOK_URL.trim() !== '') {
+                try {
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "TRANSMITTING...";
+                    await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            tier: tierVal,
+                            name: nameVal,
+                            email: emailVal,
+                            level: levelVal,
+                            notes: notesVal,
+                            language: 'EN'
+                        })
+                    });
+                } catch (err) {
+                    console.log('Webhook error (non-fatal):', err);
+                }
             }
 
             // Success
