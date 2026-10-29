@@ -103,7 +103,7 @@
 <body class="antialiased court-lines relative selection:bg-squash-neon selection:text-black min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- Top Announcement Bar / Audio Control -->
-    <aside aria-label="Audio and status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 sticky top-0 z-50 backdrop-blur-md">
+    <aside aria-label="Audio and status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 relative z-50">
         <div class="max-w-7xl mx-auto flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 text-gray-400">
             <div class="flex items-center gap-2 min-w-0">
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
@@ -132,7 +132,7 @@
     </aside>
 
     <!-- Navigation -->
-    <header class="glass-panel border-b border-gray-800 sticky top-8 z-40">
+    <header class="glass-panel border-b border-gray-800 sticky top-0 z-40 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
@@ -542,7 +542,7 @@
                 <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Programa Técnico</span>
                 <h2 class="text-3xl sm:text-5xl font-black mb-4">Programas de Entrenamiento</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
-                    Gustavo se especializa en jugadores de liga intermedia estancados y competidores avanzados preparando las ligas de clubes de Baviera. Los principiantes se admiten estrictamente caso por caso, evaluados únicamente según el atractivo estético y la presencia en pista tras la sesión de prueba.
+                    Gustavo entrena a jugadores de club y competición. A los principiantes les recomienda venir de dos en dos (2:1) para jugar al mismo nivel juntos (clases individuales caso por caso según presencia en pista). Nota: Las pistas no están incluidas y deben ser reservadas por los jugadores.
                 </p>
             </div>
 
@@ -557,15 +557,16 @@
                         </div>
                         <p class="text-4xl font-black text-squash-neon mb-4">€15 <span class="text-sm text-gray-500 font-normal">/ 45 min</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            Una rigurosa evaluación de 45 minutos para medir actitud, fundamentos de desplazamiento y capacidad de escucha. Gus la utiliza como sesión de filtro.
+                            Primera sesión: normalmente solo cobro 15 € por el desplazamiento para conocernos y ver si hay buena sintonía en pista. Pista no incluida (reservar directamente).
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Kinetic footwork analysis</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Mental coachability baseline</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension reality check</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> 15 € por desplazamiento para primera toma de contacto</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Evaluación inicial de nivel y juego de pies</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Principiantes bienvenidos (recomendado en parejas)</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Pista no incluida (a reservar por el cliente)</li>
                             <li class="flex items-start text-squash-red font-semibold bg-red-950/20 p-2.5 rounded-lg border border-red-900/30">
                                 <i class="fas fa-triangle-exclamation mr-2 mt-0.5 shrink-0"></i>
-                                <span>Bring a Padel racket "just to compare" and the session ends instantly. No refunds.</span>
+                                <span>Trae una pala de pádel "solo para comparar" y la sesión termina al instante. Sin reembolsos.</span>
                             </li>
                         </ul>
                     </div>
@@ -589,11 +590,11 @@
                             Full biomechanical overhaul. Ruthlessly dismantle and rebuild the flawed mechanics and erratic boasts you've been repeating for years.
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-frequency feeding drills</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Frame-by-frame video telemetry</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-lactate pressure ghosting routines</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> T-position temporal dominance drills</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension & grommet audit</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> 50 € por hora de clase individual</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Ejercicios intensivos de precisión y biomecánica</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Análisis biomecánico en vídeo fotograma a fotograma</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Rutinas de ghosting y resistencia láctica</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Pista no incluida (a reservar por el cliente)</li>
                         </ul>
                     </div>
                     <button onclick="openBookingModal('Solo Private (1:1)')" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black hover:bg-yellow-300 transition-all text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(224,255,0,0.4)]">
@@ -610,12 +611,13 @@
                         </div>
                         <p class="text-4xl font-black text-white mb-4">€35 <span class="text-sm text-gray-500 font-normal">/ person</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            Bring a playing partner of equal caliber. Focus on tactical condition games, length-and-drop pairings, and high-pressure match scenarios.
+                            Normalmente recomiendo a los principiantes venir de dos en dos para jugar al mismo nivel. 35 € por persona por hora (70 € en total).
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Condition match play & constraints</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Length-and-drop pattern mastery</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Shared court fee (€70 total / hr)</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> 35 € por persona por hora (70 € total clase)</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Pista no incluida (a reservar por los jugadores)</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Opponent weakness diagnostic</li>
                         </ul>
                     </div>
@@ -924,7 +926,7 @@
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq5"></i>
                 </button>
                 <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq5">
-                    Las sesiones se imparten principalmente en Sports4You! (Sendling) y Park Club Nymphenburg. Las tarifas de pista están cubiertas según lo indicado en cada programa.
+                    Las sesiones se imparten principalmente en Sports4You! (Sendling) y Park Club Nymphenburg. Nota importante: Las pistas no están incluidas en las tarifas; se recomienda que los clientes reserven su propia pista directamente en el club.
                 </div>
             </div>
         </div>
@@ -1450,14 +1452,14 @@
             if (beginnerCasePending) {
                 feedback.className = 'p-4 rounded-xl text-xs font-mono bg-amber-950/60 border border-amber-500 text-amber-200';
                 feedback.innerHTML = `
-                    <strong class="block text-amber-400 mb-1">📋 BEGINNER TRIAL REGISTERED (CASE-BY-CASE)</strong>
-                    "Application recorded for an Introductory Trial. Remember: admission to ongoing coaching is strictly conditional and decided on a case-by-case basis, determined by Gus's assessment of your attractiveness and aesthetic aura on court after the trial round."
+                    <strong class="block text-amber-400 mb-1">📋 SOLICITUD DE PRINCIPIANTE REGISTRADA</strong>
+                    "Solicitud enviada. En la primera toma de contacto Gus solo cobra 15 € por el desplazamiento. Recuerda: se recomienda venir de dos en dos (35 € pp/h) para jugar al mismo nivel. Pista no incluida (a reservar directamente por los jugadores)."
                 `;
             } else {
                 feedback.className = 'p-4 rounded-xl text-xs font-mono bg-green-950/60 border border-squash-neon text-gray-200';
                 feedback.innerHTML = `
-                    <strong class="block text-squash-neon mb-1">✅ APPLICATION TRANSMITTED TO GUS</strong>
-                    "Your details have been registered. If Gus approves your baseline, you will receive a court time at Sendling or Nymphenburg. Bring non-marking gum-rubber shoes and zero excuses."
+                    <strong class="block text-squash-neon mb-1">✅ SOLICITUD TRANSMITIDA A GUS</strong>
+                    "Tus datos han sido registrados. Primera sesión: 15 € por desplazamiento. Tarifa estándar: 50 €/h individual o 35 € pp/h en pareja. Nota: la pista no está incluida y debe ser reservada por los jugadores."
                 `;
             }
             submitBtn.disabled = true;

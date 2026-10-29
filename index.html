@@ -103,7 +103,7 @@
 <body class="antialiased court-lines relative selection:bg-squash-neon selection:text-black min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- Top Announcement Bar / Audio Control -->
-    <aside aria-label="Audio and status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 sticky top-0 z-50 backdrop-blur-md">
+    <aside aria-label="Audio and status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 relative z-50">
         <div class="max-w-7xl mx-auto flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 text-gray-400">
             <div class="flex items-center gap-2 min-w-0">
                 <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
@@ -132,7 +132,7 @@
     </aside>
 
     <!-- Navigation -->
-    <header class="glass-panel border-b border-gray-800 sticky top-8 z-40">
+    <header class="glass-panel border-b border-gray-800 sticky top-0 z-40 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
@@ -542,7 +542,7 @@
                 <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Technical Curriculum</span>
                 <h2 class="text-3xl sm:text-5xl font-black mb-4">Training Regimens</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
-                    Gustavo specializes in intermediate league players stuck on a plateau and advanced competitors prepping for Bavarian club leagues. Beginners are strictly accepted on a case-by-case basis — evaluated solely on personal aesthetic appeal and court presence during the trial round.
+                    Gustavo specializes in intermediate league players and advanced competitors prepping for Bavarian club leagues. Beginners are warmly encouraged to train in pairs (2:1) to play at the same level, or individually on a case-by-case basis based on court presence. Note: Court bookings are not included and should ideally be reserved by the player.
                 </p>
             </div>
 
@@ -557,12 +557,13 @@
                         </div>
                         <p class="text-4xl font-black text-squash-neon mb-4">€15 <span class="text-sm text-gray-500 font-normal">/ 45 min</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            A rigorous 45-minute assessment to evaluate attitude, footwork baselines, and coachability. Gus uses this as a gatekeeper session.
+                            First-time introductory session: €15 travel charge to get acquainted, assess your baseline, and see if the chemistry fits on court. Court booking not included.
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Kinetic footwork analysis</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Mental coachability baseline</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension reality check</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> €15 travel expense to see if we click</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Initial skill & movement assessment</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Beginners welcome (recommended in pairs)</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Court not included (please book court directly)</li>
                             <li class="flex items-start text-squash-red font-semibold bg-red-950/20 p-2.5 rounded-lg border border-red-900/30">
                                 <i class="fas fa-triangle-exclamation mr-2 mt-0.5 shrink-0"></i>
                                 <span>Bring a Padel racket "just to compare" and the session ends instantly. No refunds.</span>
@@ -589,11 +590,11 @@
                             Full biomechanical overhaul. Ruthlessly dismantle and rebuild the flawed mechanics and erratic boasts you've been repeating for years.
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-frequency feeding drills</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Frame-by-frame video telemetry</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-frequency feeding & technique drills</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Frame-by-frame video telemetry & biomechanics</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-lactate pressure ghosting routines</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> T-position temporal dominance drills</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension & grommet audit</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Court not included (booked by client)</li>
                         </ul>
                     </div>
                     <button onclick="openBookingModal('Solo Private (1:1)')" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black hover:bg-yellow-300 transition-all text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(224,255,0,0.4)]">
@@ -610,12 +611,13 @@
                         </div>
                         <p class="text-4xl font-black text-white mb-4">€35 <span class="text-sm text-gray-500 font-normal">/ person</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            Bring a playing partner of equal caliber. Focus on tactical condition games, length-and-drop pairings, and high-pressure match scenarios.
+                            Normally recommended for beginners or sparring partners to play at the same level together. €35 per person per hour (€70 total / hour).
                         </p>
                         <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Condition match play & constraints</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Length-and-drop pattern mastery</li>
-                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Shared court fee (€70 total / hr)</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> €35 / person / hour (€70 total coaching)</li>
+                            <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Court not included (booked by players)</li>
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Opponent weakness diagnostic</li>
                         </ul>
                     </div>
@@ -924,7 +926,7 @@
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq5"></i>
                 </button>
                 <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq5">
-                    Sessions are primarily held at Sports4You! in Sendling and Park Club Nymphenburg. Court fees are covered as specified in the tier details.
+                    Sessions are primarily held at Sports4You! in Sendling and Park Club Nymphenburg. Please note: Court fees are not included in coaching rates — clients should ideally reserve their own court time directly at the facility.
                 </div>
             </div>
         </div>
@@ -1451,13 +1453,13 @@
                 feedback.className = 'p-4 rounded-xl text-xs font-mono bg-amber-950/60 border border-amber-500 text-amber-200';
                 feedback.innerHTML = `
                     <strong class="block text-amber-400 mb-1">📋 BEGINNER TRIAL REGISTERED (CASE-BY-CASE)</strong>
-                    "Application recorded for an Introductory Trial. Remember: admission to ongoing coaching is strictly conditional and decided on a case-by-case basis, determined by Gus's assessment of your attractiveness and aesthetic aura on court after the trial round."
+                    "Application recorded. For the first trial, Gus typically charges just €15 for travel to get acquainted. Note: Beginners are strongly recommended to train in pairs (2:1 at €35 pp/hr) to match levels, and courts must be booked directly by the player. Ongoing solo training is decided case-by-case on court aesthetic appeal."
                 `;
             } else {
                 feedback.className = 'p-4 rounded-xl text-xs font-mono bg-green-950/60 border border-squash-neon text-gray-200';
                 feedback.innerHTML = `
                     <strong class="block text-squash-neon mb-1">✅ APPLICATION TRANSMITTED TO GUS</strong>
-                    "Your details have been registered. If Gus approves your baseline, you will receive a court time at Sendling or Nymphenburg. Bring non-marking gum-rubber shoes and zero excuses."
+                    "Your details have been registered. First session: €15 travel charge. Regular rate: €50/hr solo or €35 pp/hr duo. Please note: court booking is not included and should be reserved directly. Bring non-marking gum-rubber shoes and zero excuses."
                 `;
             }
             submitBtn.disabled = true;
