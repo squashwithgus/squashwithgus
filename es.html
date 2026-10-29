@@ -110,16 +110,7 @@
                 <span class="truncate text-[11px] sm:text-xs">Pistas: <span class="text-gray-200 font-medium">Sports4You!</span> y <span class="text-gray-200 font-medium">Park Club</span><span class="hidden md:inline text-gray-400"> (Sendling y Nymphenburg)</span></span>
             </div>
             <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
-                <!-- Language Switcher Pill -->
-                <div class="flex items-center bg-gray-900 border border-gray-700 rounded px-1.5 py-0.5 text-[11px] font-mono">
-                    <a href="index.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Switch to English">EN</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="de.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Auf Deutsch wechseln">DE</a>
-                    <span class="text-gray-600">|</span>
-                    <span class="px-1.5 py-0.5 text-squash-neon font-bold bg-gray-800 rounded">ES</span>
-                </div>
-
-                <span class="hidden sm:inline text-gray-700">|</span>
+                
 
                 <button id="sound-toggle" onclick="toggleAudio()" aria-label="Toggle court sound telemetry" class="hover:text-squash-neon transition-colors flex items-center gap-1.5 py-1 px-1.5 text-[11px] uppercase tracking-wider font-mono">
                     <i id="sound-icon" class="fas fa-volume-up text-squash-neon"></i>
@@ -151,7 +142,7 @@
                     <a href="#about" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Metodología</a>
                     <a href="#blog" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5">
                         <span>El Cuaderno</span>
-                        <span class="px-1.5 py-0.2 bg-squash-neon/20 text-squash-neon text-[9px] rounded font-mono font-bold">4 NEW</span>
+                        <span class="px-1.5 py-0.2 bg-squash-neon/20 text-squash-neon text-[9px] rounded font-mono font-bold">4 NUEVOS</span>
                     </a>
                     <a href="#services" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Programas</a>
                     <a href="#quiz" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Diagnóstico</a>
@@ -167,8 +158,8 @@
                         <span class="px-2.5 py-1 bg-squash-neon text-gray-950 font-black">ES</span>
                     </div>
 
-                    <button onclick="openBookingModal('Introductory Trial')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
-                        Apply for Trial
+                    <button onclick="openBookingModal('Sesión de Prueba')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
+                        Solicitar Prueba
                     </button>
                 </nav>
 
@@ -194,8 +185,8 @@
             <a href="#quiz" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Diagnóstico</a>
             <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Testimonios</a>
             <a href="#faq" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Preguntas</a>
-            <button onclick="toggleMobileMenu(); openBookingModal('Introductory Trial')" class="w-full bg-squash-neon text-gray-950 py-3 rounded-lg font-bold text-sm uppercase tracking-wider">
-                Apply for Trial
+            <button onclick="toggleMobileMenu(); openBookingModal('Sesión de Prueba')" class="w-full bg-squash-neon text-gray-950 py-3 rounded-lg font-bold text-sm uppercase tracking-wider">
+                Solicitar Prueba
             </button>
         </nav>
     </header>
@@ -219,7 +210,7 @@
 
             <!-- Primary CTAs -->
             <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-                <button onclick="openBookingModal('Introductory Trial')" class="w-full sm:w-auto text-center bg-squash-neon text-gray-950 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 shadow-[0_0_20px_rgba(224,255,0,0.35)] hover:scale-[1.02] active:scale-[0.98]">
+                <button onclick="openBookingModal('Sesión de Prueba')" class="w-full sm:w-auto text-center bg-squash-neon text-gray-950 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 shadow-[0_0_20px_rgba(224,255,0,0.35)] hover:scale-[1.02] active:scale-[0.98]">
                     <i class="fas fa-clipboard-check mr-2"></i> Solicitar Evaluación Biomecánica
                 </button>
                 <a href="#blog" class="w-full sm:w-auto text-center glass-panel text-white hover:text-squash-neon border border-gray-700 px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:border-squash-neon transition-all">
@@ -570,20 +561,20 @@
                             </li>
                         </ul>
                     </div>
-                    <button onclick="openBookingModal('Introductory Trial')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
-                        Apply for Trial
+                    <button onclick="openBookingModal('Sesión de Prueba')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
+                        Solicitar Prueba
                     </button>
                 </div>
 
                 <!-- Tier 2: Solo Private (Hero Tier) -->
                 <div class="glass-panel rounded-2xl p-8 border-t-4 border-t-squash-neon md:transform md:-translate-y-2 shadow-2xl relative flex flex-col justify-between neon-glow">
                     <div class="absolute -top-3.5 right-6 bg-squash-neon text-gray-950 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
-                        Most Demanded
+                        Más Solicitado
                     </div>
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold text-white">Clase Privada Individual (1:1)</h3>
-                            <span class="text-[10px] font-mono bg-squash-neon/20 text-squash-neon px-2 py-0.5 rounded">Intensive</span>
+                            <span class="text-[10px] font-mono bg-squash-neon/20 text-squash-neon px-2 py-0.5 rounded">Intensivo</span>
                         </div>
                         <p class="text-4xl font-black text-white mb-4">€50 <span class="text-sm text-gray-500 font-normal">/ hour</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
@@ -597,7 +588,7 @@
                             <li class="flex items-center"><i class="fas fa-info-circle text-amber-400 mr-2.5"></i> Pista no incluida (a reservar por el cliente)</li>
                         </ul>
                     </div>
-                    <button onclick="openBookingModal('Solo Private (1:1)')" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black hover:bg-yellow-300 transition-all text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(224,255,0,0.4)]">
+                    <button onclick="openBookingModal('Clase Privada (1:1)')" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black hover:bg-yellow-300 transition-all text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(224,255,0,0.4)]">
                         Book Solo Session
                     </button>
                 </div>
@@ -607,7 +598,7 @@
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold text-white">Semi-Private (2:1)</h3>
-                            <span class="text-[10px] font-mono bg-gray-800 text-gray-400 px-2 py-0.5 rounded">Tactical</span>
+                            <span class="text-[10px] font-mono bg-gray-800 text-gray-400 px-2 py-0.5 rounded">Táctico</span>
                         </div>
                         <p class="text-4xl font-black text-white mb-4">€35 <span class="text-sm text-gray-500 font-normal">/ person</span></p>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
@@ -621,7 +612,7 @@
                             <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Opponent weakness diagnostic</li>
                         </ul>
                     </div>
-                    <button onclick="openBookingModal('Semi-Private (2:1)')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
+                    <button onclick="openBookingModal('Semi-Privada (2:1)')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
                         Book Duo Session
                     </button>
                 </div>
@@ -751,7 +742,7 @@
                             <p class="font-bold text-white text-sm">Dieter S.</p>
                             <p class="text-xs text-gray-500">Park Club Nymphenburg (Senior League)</p>
                         </div>
-                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verified</span>
+                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verificado</span>
                     </div>
                 </div>
 
@@ -770,7 +761,7 @@
                             <p class="font-bold text-white text-sm">Klaus W.</p>
                             <p class="text-xs text-gray-500">Sendling League (A-Division)</p>
                         </div>
-                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verified</span>
+                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verificado</span>
                     </div>
                 </div>
 
@@ -811,7 +802,7 @@
                             <p class="font-bold text-pink-400 text-sm">Anonymous</p>
                             <p class="text-xs text-gray-500">Bogenhausen</p>
                         </div>
-                        <span class="text-[10px] font-mono text-pink-400 bg-pink-950/40 px-2 py-0.5 rounded border border-pink-800/40">Complicated</span>
+                        <span class="text-[10px] font-mono text-pink-400 bg-pink-950/40 px-2 py-0.5 rounded border border-pink-800/40">Complicado</span>
                     </div>
                 </div>
 
@@ -830,14 +821,14 @@
                             <p class="font-bold text-yellow-400 text-sm">Thomas B.</p>
                             <p class="text-xs text-gray-500">Former Husband • Sendling</p>
                         </div>
-                        <span class="text-[10px] font-mono text-yellow-400 bg-yellow-950/40 px-2 py-0.5 rounded border border-yellow-800/40">5 Stars Tho</span>
+                        <span class="text-[10px] font-mono text-yellow-400 bg-yellow-950/40 px-2 py-0.5 rounded border border-yellow-800/40">5 Estrellas Igual</span>
                     </div>
                 </div>
 
                 <!-- Peak Lore: Mateo Morales (The Son) -->
                 <div class="bg-red-950/20 border-2 border-red-900/60 p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
                     <div class="absolute top-2 right-2 text-xs font-mono text-red-500 bg-red-950 px-2 py-0.5 rounded border border-red-800">
-                        1 Star Feud
+                        Disputa 1 Estrella
                     </div>
                     <div>
                         <div class="flex text-gray-600 text-xs mb-3">
