@@ -138,7 +138,7 @@
                 </a>
 
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex items-center space-x-6">
+                <nav class="hidden lg:flex items-center space-x-4 xl:space-x-6">
                     <a href="#about" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Metodología</a>
                     <a href="#blog" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5">
                         <span>El Cuaderno</span>
@@ -150,21 +150,21 @@
                     <a href="#faq" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Preguntas</a>
                     
                     <!-- Language selector in nav -->
-                    <div class="flex items-center border border-gray-700 rounded-lg overflow-hidden bg-gray-900 text-xs font-mono font-bold">
-                        <a href="index.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="English">EN</a>
+                    <div class="flex items-center border border-gray-700 rounded-lg overflow-hidden bg-gray-900 text-xs font-mono font-bold shrink-0">
+                        <a href="index.html" class="px-2 py-1 text-gray-400 hover:text-white transition-colors" title="English">EN</a>
                         <span class="w-[1px] h-4 bg-gray-700"></span>
-                        <a href="de.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="Deutsch">DE</a>
+                        <a href="de.html" class="px-2 py-1 text-gray-400 hover:text-white transition-colors" title="Deutsch">DE</a>
                         <span class="w-[1px] h-4 bg-gray-700"></span>
-                        <span class="px-2.5 py-1 bg-squash-neon text-gray-950 font-black">ES</span>
+                        <span class="px-2 py-1 bg-squash-neon text-gray-950 font-black">ES</span>
                     </div>
 
-                    <button onclick="openBookingModal('Sesión de Prueba')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
+                    <button onclick="openBookingModal('Sesión de Prueba')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)] shrink-0">
                         Solicitar Prueba
                     </button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center gap-2">
+                <div class="lg:hidden flex items-center gap-2">
                     <div class="flex items-center border border-gray-700 rounded bg-gray-900 text-xs font-mono">
                         <a href="index.html" class="px-1.5 py-0.5 text-gray-400">EN</a>
                         <a href="de.html" class="px-1.5 py-0.5 text-gray-400">DE</a>
@@ -178,7 +178,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+        <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden lg:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
             <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Metodología</a>
             <a href="#blog" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">El Cuaderno (Crónicas)</a>
             <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Programas de Entrenamiento</a>
