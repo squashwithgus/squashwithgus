@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQUASH CON GUS | Entrenamiento Técnico de Alto Rendimiento Múnich</title>
+    <meta name="description" content="Biomecánica de precisión, reconstrucción cinética del juego de pies y dominio táctico de la pared en Múnich con el 4 veces Campeón Regional Balear Gustavo 'Gus' Morales Vidal.">
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="SQUASH CON GUS | Entrenamiento Técnico de Alto Rendimiento Múnich">
+    <meta property="og:description" content="Ajedrez físico a 180 BPM. Entrenamiento técnico de élite con el 4x Campeón de Mallorca Gustavo Morales Vidal.">
+    <meta property="og:image" content="assets/gus-portrait.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        squash: {
+                            neon: '#e0ff00', // Classic double-yellow dot squash ball
+                            dark: '#0a0f1d',
+                            court: '#0f172a',
+                            panel: '#1e293b',
+                            red: '#ef4444',
+                            amber: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0f1d;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Squash Court Line Accents */
+        .court-lines {
+            background-image: 
+                linear-gradient(to right, rgba(239, 68, 68, 0.06) 1.5px, transparent 1.5px),
+                linear-gradient(to bottom, rgba(239, 68, 68, 0.06) 1.5px, transparent 1.5px);
+            background-size: 60px 60px;
+        }
+
+        /* Subtle glowing accents */
+        .neon-glow {
+            box-shadow: 0 0 25px rgba(224, 255, 0, 0.2);
+        }
+
+        .neon-glow-red {
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.35);
+        }
+
+        /* Yellow double dot decoration */
+        .double-dot::after {
+            content: "••";
+            color: #e0ff00;
+            letter-spacing: -2px;
+            font-size: 1.1em;
+            margin-left: 4px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e0ff00;
+        }
+    </style>
+</head>
+<body class="antialiased court-lines relative selection:bg-squash-neon selection:text-black min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Top Announcement Bar / Audio Control -->
+    <aside aria-label="Audio and status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 text-gray-400">
+            <div class="flex items-center gap-2 min-w-0">
+                <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span class="truncate text-[11px] sm:text-xs">Pistas: <span class="text-gray-200 font-medium">Sports4You!</span> y <span class="text-gray-200 font-medium">Park Club</span><span class="hidden md:inline text-gray-400"> (Sendling y Nymphenburg)</span></span>
+            </div>
+            <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
+                <!-- Language Switcher Pill -->
+                <div class="flex items-center bg-gray-900 border border-gray-700 rounded px-1.5 py-0.5 text-[11px] font-mono">
+                    <a href="index.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Switch to English">EN</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="de.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Auf Deutsch wechseln">DE</a>
+                    <span class="text-gray-600">|</span>
+                    <span class="px-1.5 py-0.5 text-squash-neon font-bold bg-gray-800 rounded">ES</span>
+                </div>
+
+                <span class="hidden sm:inline text-gray-700">|</span>
+
+                <button id="sound-toggle" onclick="toggleAudio()" aria-label="Toggle court sound telemetry" class="hover:text-squash-neon transition-colors flex items-center gap-1.5 py-1 px-1.5 text-[11px] uppercase tracking-wider font-mono">
+                    <i id="sound-icon" class="fas fa-volume-up text-squash-neon"></i>
+                    <span id="sound-label" class="hidden sm:inline">Audio en Pista: ON</span>
+                </button>
+                <span class="hidden sm:inline text-gray-700">|</span>
+                <span class="hidden sm:inline text-gray-400 font-mono text-[11px]">Múnich, Baviera</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation -->
+    <header class="glass-panel border-b border-gray-800 sticky top-8 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group" onclick="playSquashSound('thwack')">
+                    <div class="w-9 h-9 rounded-lg bg-squash-neon/10 border border-squash-neon/30 flex items-center justify-center group-hover:bg-squash-neon/20 transition-all">
+                        <i class="fas fa-table-tennis-paddle-ball text-squash-neon text-sm"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-black text-lg tracking-tight leading-none">GUS MORALES</span>
+                        <span class="text-[10px] font-mono tracking-widest text-squash-neon uppercase mt-0.5">Academia de Squash Múnich</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Metodología</a>
+                    <a href="#blog" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5">
+                        <span>El Cuaderno</span>
+                        <span class="px-1.5 py-0.2 bg-squash-neon/20 text-squash-neon text-[9px] rounded font-mono font-bold">4 NEW</span>
+                    </a>
+                    <a href="#services" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Programas</a>
+                    <a href="#quiz" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Diagnóstico</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Testimonios</a>
+                    <a href="#faq" class="text-gray-300 hover:text-squash-neon px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors">Preguntas</a>
+                    
+                    <!-- Language selector in nav -->
+                    <div class="flex items-center border border-gray-700 rounded-lg overflow-hidden bg-gray-900 text-xs font-mono font-bold">
+                        <a href="index.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="English">EN</a>
+                        <span class="w-[1px] h-4 bg-gray-700"></span>
+                        <a href="de.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="Deutsch">DE</a>
+                        <span class="w-[1px] h-4 bg-gray-700"></span>
+                        <span class="px-2.5 py-1 bg-squash-neon text-gray-950 font-black">ES</span>
+                    </div>
+
+                    <button onclick="openBookingModal('Introductory Trial')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
+                        Apply for Trial
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <div class="flex items-center border border-gray-700 rounded bg-gray-900 text-xs font-mono">
+                        <a href="index.html" class="px-1.5 py-0.5 text-gray-400">EN</a>
+                        <a href="de.html" class="px-1.5 py-0.5 text-gray-400">DE</a>
+                        <span class="px-1.5 py-0.5 bg-squash-neon text-gray-950 font-bold">ES</span>
+                    </div>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" class="text-gray-400 hover:text-white p-2.5 rounded-lg active:bg-gray-800 transition-colors">
+                        <i class="fas fa-bars text-lg" id="mobile-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <nav id="mobile-menu" aria-label="Mobile navigation" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Metodología</a>
+            <a href="#blog" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">El Cuaderno (Crónicas)</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Programas de Entrenamiento</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Diagnóstico</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Testimonios</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-squash-neon py-2 text-base font-medium">Preguntas</a>
+            <button onclick="toggleMobileMenu(); openBookingModal('Introductory Trial')" class="w-full bg-squash-neon text-gray-950 py-3 rounded-lg font-bold text-sm uppercase tracking-wider">
+                Apply for Trial
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <!-- Hero Section (Serious, Prestigious, Photorealistic) -->
+    <section class="pt-16 pb-20 lg:pt-28 lg:pb-32 px-4 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="w-full lg:w-7/12 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-squash-neon/10 text-squash-neon border border-squash-neon/30 text-xs font-bold tracking-wider uppercase">
+                <i class="fas fa-medal"></i> Instrucción Biomecánica de Élite • Múnich, Baviera
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.08] tracking-tight">
+                Ajedrez físico a <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-squash-neon via-yellow-200 to-green-400">180 BPM.</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-gray-300 font-normal leading-relaxed max-w-xl">
+                Elimina la energía cinética desperdiciada. Reconstruye la deceleración de tu juego de pies, domina la T y juega al squash como una ciencia exacta. Entrenamiento de alto rendimiento con el 4 veces Campeón Regional Balear <strong class="text-white font-semibold">Gustavo "Gus" Morales Vidal</strong>.
+            </p>
+
+            <!-- Primary CTAs -->
+            <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+                <button onclick="openBookingModal('Introductory Trial')" class="w-full sm:w-auto text-center bg-squash-neon text-gray-950 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 shadow-[0_0_20px_rgba(224,255,0,0.35)] hover:scale-[1.02] active:scale-[0.98]">
+                    <i class="fas fa-clipboard-check mr-2"></i> Solicitar Evaluación Biomecánica
+                </button>
+                <a href="#blog" class="w-full sm:w-auto text-center glass-panel text-white hover:text-squash-neon border border-gray-700 px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:border-squash-neon transition-all">
+                    <i class="fas fa-book-open mr-2 text-squash-neon"></i> Leer El Cuaderno del Entrenador
+                </a>
+            </div>
+
+            <!-- Gus's Serious Quote -->
+            <div class="pt-3 border-t border-gray-800/80">
+                <blockquote class="text-sm text-gray-400 italic flex items-center gap-2">
+                    <span class="text-squash-neon font-black text-lg">“</span>
+                    La pista no perdona el movimiento inútil. La eficiencia no es una preferencia estética; es física inmutable.
+                    <span class="text-squash-neon font-black text-lg">”</span>
+                </blockquote>
+            </div>
+
+            <!-- Authentic Credentials Badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 max-w-lg">
+                <div class="glass-panel p-3 rounded-lg border border-gray-800 text-center">
+                    <span class="block text-squash-neon font-black text-xl">4x</span>
+                    <span class="text-[11px] text-gray-400 uppercase font-semibold">Campeón Mallorca</span>
+                </div>
+                <div class="glass-panel p-3 rounded-lg border border-gray-800 text-center">
+                    <span class="block text-white font-black text-xl">10+ Yrs</span>
+                    <span class="text-[11px] text-gray-400 uppercase font-semibold">Circuito Múnich</span>
+                </div>
+                <div class="glass-panel p-3 rounded-lg border border-gray-800 text-center">
+                    <span class="block text-squash-neon font-black text-xl">100%</span>
+                    <span class="text-[11px] text-gray-400 uppercase font-semibold">Protección Articular</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photorealistic Gus Portrait Container -->
+        <div class="w-full lg:w-5/12 flex justify-center lg:justify-end relative">
+            <div class="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden border border-gray-700/80 shadow-2xl glass-panel group">
+                <!-- High Resolution Photorealistic Editorial Photo of Gus -->
+                <img id="gus-image" 
+                     src="assets/gus-portrait.jpg" 
+                     alt="Gustavo 'Gus' Morales Vidal - Master Technical Squash Coach Munich" 
+                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-102">
+                
+                <!-- Court Line Overlay Accent -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent pointer-events-none"></div>
+
+                <!-- Live Status Top Right -->
+                <div class="absolute top-4 right-4 bg-black/85 backdrop-blur-md border border-gray-700 px-3 py-1 rounded-full flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[11px] font-mono text-gray-300">Pista 1 • En Activo</span>
+                </div>
+
+                <!-- Coach Identity Card Bottom -->
+                <div class="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-white font-black text-xl tracking-tight">Gustavo "Gus" Morales Vidal</span>
+                        <span class="text-base" title="Mallorca, Spain">🇪🇸</span>
+                    </div>
+                    <p class="text-gray-300 text-xs font-medium">Entrenador Técnico Principal • Ex Campeón Regional Balear</p>
+                    <div class="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-gray-400 font-mono">
+                        <span class="px-2 py-0.5 rounded bg-gray-900/90 border border-gray-700">Sports4You! Sendling</span>
+                        <span class="px-2 py-0.5 rounded bg-gray-900/90 border border-gray-700">Park Club Nymphenburg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology & Biomechanical Manifesto -->
+    <section id="about" class="py-24 bg-gray-900/70 border-y border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Story Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block text-squash-neon font-mono text-xs uppercase tracking-widest font-bold">
+                        La Doctrina Purista
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+                        Forjado en Paralelas Asfixiantes, Deceleración Cinética y <span class="text-squash-neon">Recuperación Incansable</span>.
+                    </h2>
+                    <div class="w-20 h-1 bg-squash-red"></div>
+                    
+                    <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                        Entre 1998 y 2004, Gustavo dominó el circuito balear de raqueta, alzándose con el <strong class="text-white">Campeonato Regional de Mallorca cuatro años consecutivos</strong>. Su juego se cimentó en una capacidad pulmonar demoledora, profundidad asfixiante y un dominio espacial absoluto de la T.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                        Esa trayectoria internacional se truncó a los 27 años en una semifinal de exhibición en Barcelona. Al perseguir una carambola agónica en el nick delantero izquierdo, su zapatilla mordió el barniz de poliuretano de alta tracción; el pie quedó clavado mientras el torso continuó rotando. El resultado fue una rotura multiligamentosa catastrófica (rotura completa de LCA y menisco lateral).
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                        Tras mudarse a Múnich para someterse a rehabilitación ortopédica especializada, Gus transformó la lesión en ciencia biomecánica. Su programa no está concebido para charlas de café. Es un análisis inflexible de <strong class="text-squash-neon">deceleración articular protegida, disciplina de muñeca y longitud intransigente</strong>.
+                    </p>
+                    
+                    <!-- 3 Core Principles List -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start p-4 rounded-xl bg-squash-panel/60 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-squash-neon/10 border border-squash-neon/30 flex items-center justify-center shrink-0 mr-4">
+                                <i class="fas fa-person-running text-squash-neon"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Preservación Articular Cinética</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-0.5">Reestructuración de la zancada de recuperación en 5 tiempos para eliminar la torsión rotacional en rótula y menisco, nacido directamente de la rehabilitación posquirúrgica de Gus.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-4 rounded-xl bg-squash-panel/60 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-squash-neon/10 border border-squash-neon/30 flex items-center justify-center shrink-0 mr-4">
+                                <i class="fas fa-crosshairs text-squash-neon"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">El Mandato de los 50 Paralelos</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-0.5">Golpearás 50 golpes paralelos consecutivos de revés a menos de 5 cm de la pared tras el cuadro de saque antes de que Gus te permita siquiera mirar hacia una dejada.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-4 rounded-xl bg-squash-panel/60 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-squash-neon/10 border border-squash-neon/30 flex items-center justify-center shrink-0 mr-4">
+                                <i class="fas fa-arrows-to-dot text-squash-neon"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Dominio Temporal de la T</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-0.5">Armado engañoso de muñeca e interceptación de la bola en el ápice de bote para arrebatarle todo el tiempo de reacción al rival.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Feature Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Court Mandate Card -->
+                    <div class="glass-panel p-8 rounded-2xl relative overflow-hidden border border-gray-700/60 shadow-xl">
+                        <div class="absolute -right-8 -top-8 text-8xl text-gray-700 opacity-20 font-serif select-none">“</div>
+                        <div class="flex items-center gap-2 text-squash-neon font-mono text-xs font-bold uppercase mb-3">
+                            <i class="fas fa-compass"></i> Axioma Técnico
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Mira la Bola Impactar en el Cordaje</h3>
+                        <p class="text-lg text-gray-300 italic mb-6 leading-relaxed">
+                            "Mira la bola golpear las cuerdas. Te quedas mirando la pared frontal como si fuera a moverse. Es hormigón. Se queda donde la construyeron."
+                        </p>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700 shrink-0">
+                                <i class="fas fa-mug-hot text-amber-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white uppercase tracking-wider">Protocolo Post-Pista</p>
+                                <p class="text-xs text-gray-400">Paulaner Spezi bien fría y espresso doble en la cafetería de Sports4You!.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gus's Signature Quirks Card (First Layer of Irony) -->
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800">
+                        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <i class="fas fa-screwdriver-wrench text-squash-neon"></i> Rarezas Técnicas y Reliquias
+                        </h4>
+                        <div class="space-y-3.5 text-xs text-gray-300">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-mono font-bold shrink-0 mt-0.5">1</span>
+                                <span><strong>The Dunlop Pointer:</strong> Carries a classic 2004 Dunlop Revelation Pro with cracked grommets. He never hits with it—he uses the head purely to jab the floorboard marker where your lead heel should have braked.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-mono font-bold shrink-0 mt-0.5">2</span>
+                                <span><strong>String Tension Audit:</strong> Always tests student string tension by drumming against his palm, followed by an immediate involuntary grimace.</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-mono font-bold shrink-0 mt-0.5">3</span>
+                                <span><strong>The Faded 2004 Wristband:</strong> Keeps a tattered Spanish flag wristband in his bag won during his Balearic title campaign—worn, but never retired.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Padel Feud Warning Banner (Deepening Irony) -->
+                    <div class="bg-red-950/20 border border-red-900/50 p-5 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-ban text-squash-red text-lg"></i>
+                            <h4 class="text-red-400 font-bold text-sm">The Padel Feud (Strict Policy)</h4>
+                        </div>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            "Beach tennis inside a chicken coop. A recreational pastime for individuals who refuse to sweat or learn footwork." Seeing Munich squash courts converted into padel cages drives Gus into quiet fury.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: The Coach's Journal / Cuaderno de Pista (Blog) -->
+    <section id="blog" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-gray-800 pb-8">
+            <div>
+                <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">
+                    <i class="fas fa-feather-pointed mr-1.5"></i> Cuaderno de Pista • Field Notes
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">The Coach's Journal</h2>
+                <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-2xl">
+                    Biomechanical field notes, technical essays, and philosophical reflections on modern racket sports by Gustavo Morales Vidal.
+                </p>
+            </div>
+            
+            <!-- Author Meta Pill -->
+            <div class="mt-6 md:mt-0 flex items-center gap-3 bg-gray-900/80 border border-gray-800 px-4 py-2.5 rounded-xl self-start sm:self-auto">
+                <img src="assets/gus-author.jpg" alt="Coach Gus" class="w-10 h-10 rounded-lg object-cover border border-gray-700">
+                <div class="text-xs">
+                    <p class="font-bold text-white">Gustavo Morales Vidal</p>
+                    <p class="text-gray-400 font-mono text-[10px]">Head Coach • Munich, Germany</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Blog Card 1 -->
+            <article class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all flex flex-col justify-between group">
+                <div class="p-7">
+                    <div class="flex justify-between items-center text-xs mb-3 font-mono">
+                        <span class="px-2.5 py-1 rounded bg-squash-neon/10 text-squash-neon border border-squash-neon/20 font-bold uppercase text-[10px]">
+                            Technical Biomechanics
+                        </span>
+                        <span class="text-gray-400">Oct 14, 2026 • 5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-squash-neon transition-colors mb-3 leading-snug">
+                        The Kinematics of the Straight Rail vs. The Epidemic of the Chicken Coop
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Why 95% of league players abandon parallel length to play low-percentage boasts, and how the rise of glass cages threatens the fundamental geometry of racket sport.
+                    </p>
+                </div>
+                <div class="px-7 py-4 bg-gray-950/60 border-t border-gray-800/80 flex items-center justify-between">
+                    <button onclick="openBlogModal('rail-vs-coop')" class="text-xs font-bold text-squash-neon uppercase tracking-wider hover:text-white flex items-center gap-2 transition-colors">
+                        <span>Read Full Dispatch</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                    <span class="text-[11px] font-mono text-gray-500">Geometry • Technique</span>
+                </div>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all flex flex-col justify-between group">
+                <div class="p-7">
+                    <div class="flex justify-between items-center text-xs mb-3 font-mono">
+                        <span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 border border-red-500/20 font-bold uppercase text-[10px]">
+                            Physiotherapy & Injury
+                        </span>
+                        <span class="text-gray-400">Sep 28, 2026 • 7 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-squash-neon transition-colors mb-3 leading-snug">
+                        Floor Varnish, Deceleration, and the Semifinal of 2008: A Biomechanical Autopsy
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        The physics of catastrophic ligament deceleration. An unsparing breakdown of the lunge that ended my international career in Barcelona, and how it gave birth to my rotational footwork system.
+                    </p>
+                </div>
+                <div class="px-7 py-4 bg-gray-950/60 border-t border-gray-800/80 flex items-center justify-between">
+                    <button onclick="openBlogModal('barcelona-2008')" class="text-xs font-bold text-squash-neon uppercase tracking-wider hover:text-white flex items-center gap-2 transition-colors">
+                        <span>Read Full Dispatch</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                    <span class="text-[11px] font-mono text-gray-500">Barcelona 2008 • Knee Rehab</span>
+                </div>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all flex flex-col justify-between group">
+                <div class="p-7">
+                    <div class="flex justify-between items-center text-xs mb-3 font-mono">
+                        <span class="px-2.5 py-1 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 font-bold uppercase text-[10px]">
+                            Player Development & Family
+                        </span>
+                        <span class="text-gray-400">Jul 04, 2026 • 8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-squash-neon transition-colors mb-3 leading-snug">
+                        Scouting Dispatch: Spanish U23 Circuit & The Betrayal of the Glass Wall
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        A technical review of the 2024 Madrid Premier Padel final. Highlighting one left-handed competitor whose court coverage was forged on hardwood squash courts, but whose soul was sold to commercial sponsors.
+                    </p>
+                </div>
+                <div class="px-7 py-4 bg-gray-950/60 border-t border-gray-800/80 flex items-center justify-between">
+                    <button onclick="openBlogModal('mateo-scouting')" class="text-xs font-bold text-squash-neon uppercase tracking-wider hover:text-white flex items-center gap-2 transition-colors">
+                        <span>Read Full Dispatch</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                    <span class="text-[11px] font-mono text-gray-500">Mateo • Premier Padel</span>
+                </div>
+            </article>
+
+            <!-- Blog Card 4 -->
+            <article class="glass-panel rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all flex flex-col justify-between group">
+                <div class="p-7">
+                    <div class="flex justify-between items-center text-xs mb-3 font-mono">
+                        <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold uppercase text-[10px]">
+                            Sports Nutrition & Culture
+                        </span>
+                        <span class="text-gray-400">May 12, 2026 • 4 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-squash-neon transition-colors mb-3 leading-snug">
+                        Post-Match Glycogen Recovery: Why Paulaner Spezi Outperforms Electrolyte Powders
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Why modern hydration sachets and matcha shakes are marketing illusions, and why the Bavarian concoction of cold Spezi and double espresso remains the pinnacle of post-court recovery.
+                    </p>
+                </div>
+                <div class="px-7 py-4 bg-gray-950/60 border-t border-gray-800/80 flex items-center justify-between">
+                    <button onclick="openBlogModal('spezi-recovery')" class="text-xs font-bold text-squash-neon uppercase tracking-wider hover:text-white flex items-center gap-2 transition-colors">
+                        <span>Read Full Dispatch</span>
+                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                    <span class="text-[11px] font-mono text-gray-500">Paulaner Spezi • Physiology</span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Training Regimens & Pricing -->
+    <section id="services" class="py-24 bg-gray-900/60 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Programa Técnico</span>
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">Programas de Entrenamiento</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    Gustavo se especializa en jugadores de liga intermedia estancados y competidores avanzados preparando las ligas de clubes de Baviera. Los principiantes se admiten estrictamente caso por caso, evaluados únicamente según el atractivo estético y la presencia en pista tras la sesión de prueba.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Tier 1: Assessment -->
+                <div class="glass-panel rounded-2xl p-8 border-t-4 border-t-gray-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">Sesión de Prueba</h3>
+                            <span class="text-[10px] font-mono bg-gray-800 text-gray-400 px-2 py-0.5 rounded">Filtro Previo</span>
+                        </div>
+                        <p class="text-4xl font-black text-squash-neon mb-4">€15 <span class="text-sm text-gray-500 font-normal">/ 45 min</span></p>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Una rigurosa evaluación de 45 minutos para medir actitud, fundamentos de desplazamiento y capacidad de escucha. Gus la utiliza como sesión de filtro.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Kinetic footwork analysis</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Mental coachability baseline</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension reality check</li>
+                            <li class="flex items-start text-squash-red font-semibold bg-red-950/20 p-2.5 rounded-lg border border-red-900/30">
+                                <i class="fas fa-triangle-exclamation mr-2 mt-0.5 shrink-0"></i>
+                                <span>Bring a Padel racket "just to compare" and the session ends instantly. No refunds.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Introductory Trial')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
+                        Apply for Trial
+                    </button>
+                </div>
+
+                <!-- Tier 2: Solo Private (Hero Tier) -->
+                <div class="glass-panel rounded-2xl p-8 border-t-4 border-t-squash-neon md:transform md:-translate-y-2 shadow-2xl relative flex flex-col justify-between neon-glow">
+                    <div class="absolute -top-3.5 right-6 bg-squash-neon text-gray-950 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+                        Most Demanded
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">Clase Privada Individual (1:1)</h3>
+                            <span class="text-[10px] font-mono bg-squash-neon/20 text-squash-neon px-2 py-0.5 rounded">Intensive</span>
+                        </div>
+                        <p class="text-4xl font-black text-white mb-4">€50 <span class="text-sm text-gray-500 font-normal">/ hour</span></p>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Full biomechanical overhaul. Ruthlessly dismantle and rebuild the flawed mechanics and erratic boasts you've been repeating for years.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-frequency feeding drills</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Frame-by-frame video telemetry</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> High-lactate pressure ghosting routines</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> T-position temporal dominance drills</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> String tension & grommet audit</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Solo Private (1:1)')" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black hover:bg-yellow-300 transition-all text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(224,255,0,0.4)]">
+                        Book Solo Session
+                    </button>
+                </div>
+
+                <!-- Tier 3: Semi-Private Duo -->
+                <div class="glass-panel rounded-2xl p-8 border-t-4 border-t-gray-500 hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-white">Semi-Private (2:1)</h3>
+                            <span class="text-[10px] font-mono bg-gray-800 text-gray-400 px-2 py-0.5 rounded">Tactical</span>
+                        </div>
+                        <p class="text-4xl font-black text-white mb-4">€35 <span class="text-sm text-gray-500 font-normal">/ person</span></p>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Bring a playing partner of equal caliber. Focus on tactical condition games, length-and-drop pairings, and high-pressure match scenarios.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Condition match play & constraints</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Length-and-drop pattern mastery</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Shared court fee (€70 total / hr)</li>
+                            <li class="flex items-center"><i class="fas fa-check text-squash-neon mr-2.5"></i> Opponent weakness diagnostic</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal('Semi-Private (2:1)')" class="w-full py-3.5 rounded-xl bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors text-sm uppercase tracking-wider">
+                        Book Duo Session
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Biomechanical Screener & Diagnostics -->
+    <section id="quiz" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-gray-800 shadow-2xl relative overflow-hidden">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="inline-block px-3 py-1 rounded-full bg-squash-neon/10 text-squash-neon border border-squash-neon/30 text-xs font-mono font-bold uppercase tracking-wider mb-3">
+                    Test de Idoneidad Biomecánica
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">¿Estás Preparado para Entrar en la Pista de Gus?</h2>
+                <p class="text-gray-400 text-sm mt-2">Antes de solicitar pista, comprueba tu selección de golpes, tu disciplina táctica y el cuidado de tu material.</p>
+            </div>
+
+            <div id="quiz-container" class="space-y-6">
+                <!-- Question 1 -->
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
+                    <p class="text-sm font-bold text-white mb-3">1. Tu rival clava una bola paralela agónica en el fondo de la esquina izquierda. ¿Cuál es tu reacción mecánica?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                        <button onclick="selectAnswer(1, 0)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            A) Pánico e intento de carambola inversa totalmente desequilibrado.
+                        </button>
+                        <button onclick="selectAnswer(1, 1)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            B) Despejar la T, bajar el centro de gravedad y sacar altura paralela con la cara abierta.
+                        </button>
+                        <button onclick="selectAnswer(1, 2)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            C) Esperar a que rebote en el cristal trasero como en el pádel.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
+                    <p class="text-sm font-bold text-white mb-3">2. ¿Cuál es tu protocolo de tensión de cordaje y mantenimiento de raqueta?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                        <button onclick="selectAnswer(2, 0)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            A) 11,5 kg con Ashaway SuperNick XL, comprobado semanalmente contra la palma.
+                        </button>
+                        <button onclick="selectAnswer(2, 1)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            B) Las cuerdas que venían de fábrica cuando compré la raqueta hace tres años.
+                        </button>
+                        <button onclick="selectAnswer(2, 2)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            C) Mi raqueta no tiene cuerdas; es de fibra de vidrio sólida con agujeros.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
+                    <p class="text-sm font-bold text-white mb-3">3. ¿Cuántos golpes paralelos seguidos de revés metes detrás de la caja de saque sin tocar la chapa?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                        <button onclick="selectAnswer(3, 0)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            A) 50 o más con correcta carga y rotación de cadera.
+                        </button>
+                        <button onclick="selectAnswer(3, 1)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            B) Unos 15, pero se me dobla la muñeca en cuanto me canso.
+                        </button>
+                        <button onclick="selectAnswer(3, 2)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
+                            C) ¿Qué es la chapa?
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-center pt-2">
+                    <button id="evaluate-quiz-btn" onclick="evaluateQuiz()" class="bg-gray-800 text-gray-400 px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase border border-gray-700 cursor-not-allowed transition-all" disabled>
+                        Enviar para el Veredicto de Gus
+                    </button>
+                </div>
+
+                <div id="quiz-result" class="hidden mt-6 p-6 rounded-2xl text-center"></div>
+            </div>
+
+            <!-- Deepening Irony: Escalating Baseline Consultation Tool -->
+            <div class="mt-12 pt-8 border-t border-gray-800/80 flex flex-col items-center">
+                <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mb-2">Interfaz de Telemetría en Directo</p>
+                <button id="escalation-btn" onclick="escalateGus()" class="glass-panel text-squash-neon border border-squash-neon/40 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-squash-neon hover:text-black transition-all">
+                    <i class="fas fa-microchip mr-2"></i> Consultar Telemetría Cinética de Gus
+                </button>
+                <div class="min-h-[2.5rem] flex items-center mt-2">
+                    <p id="escalation-msg" class="text-xs font-mono text-squash-neon transition-colors duration-200 text-center"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Word on the Court) -->
+    <section id="testimonials" class="py-24 bg-gray-900/80 border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Testimonios Verificados</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white">Voces en la Pista</h2>
+                <p class="text-gray-400 text-sm mt-2 max-w-xl mx-auto">Desde campeones de la liga bávara hasta asuntos familiares cada vez más enredados.</p>
+            </div>
+
+            <!-- Testimonial Tabs (Starts Serious, Unlocks Irony) -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex flex-col sm:flex-row w-full sm:w-auto p-1 rounded-xl bg-gray-950 border border-gray-800 gap-1">
+                    <button id="tab-btn-league" onclick="switchTestimonialTab('league')" class="w-full sm:w-auto px-5 py-2.5 sm:py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-squash-neon text-gray-950">
+                        Competidores de Liga Bávara
+                    </button>
+                    <button id="tab-btn-unfiltered" onclick="switchTestimonialTab('unfiltered')" class="w-full sm:w-auto justify-center px-5 py-2.5 sm:py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5">
+                        <span>Sin Filtro & Crónicas Familiares</span>
+                        <span class="w-2 h-2 rounded-full bg-squash-red animate-pulse"></span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Tab 1: Competidores de Liga Bávara (100% Serious & Elite) -->
+            <div id="tab-league" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Legit Review 1: Dieter -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-squash-neon text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            "Gus rebuilt my footwork entirely. Before I met him, my knees felt like they belonged to an octogenarian. He doesn't smile much, but his silence after a sloppy unforced error forces you to execute properly."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-white text-sm">Dieter S.</p>
+                            <p class="text-xs text-gray-500">Park Club Nymphenburg (Senior League)</p>
+                        </div>
+                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verified</span>
+                    </div>
+                </div>
+
+                <!-- Legit Review 2: Klaus -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-squash-neon text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            "His understanding of T-position dominance is unmatched in Bavaria. We spent three weeks purely hitting parallel length before he permitted a drop shot. My league ranking jumped two tiers."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-white text-sm">Klaus W.</p>
+                            <p class="text-xs text-gray-500">Sendling League (A-Division)</p>
+                        </div>
+                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verified</span>
+                    </div>
+                </div>
+
+                <!-- Legit Review 3: Celine -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-squash-neon text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            "Estuve atascada en el ranking C durante dos años. Seis meses de acondicionamiento cinético con Gus y ahora compito en la Oberliga bávara. Prepárate para dejar el ego en la puerta y calzar suela de goma caramelo."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-white text-sm">Celine, 18 years old</p>
+                            <p class="text-xs text-gray-500">Circuito Juvenil Bávaro & Ranking Múnich #3</p>
+                        </div>
+                        <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verificado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Sin Filtro & Crónicas Familiares Submissions (High Irony & Backstory Lore) -->
+            <div id="tab-unfiltered" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Escalating Funny 1: Anonymous -->
+                <div class="glass-panel p-6 rounded-2xl border border-pink-900/40 hover:border-pink-500/50 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-squash-neon text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            "He is the father of one of my children but my husband does not know it. Excellent coaching style though, my backhand slice has never been more lethal. Highly recommend."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-pink-400 text-sm">Anonymous</p>
+                            <p class="text-xs text-gray-500">Bogenhausen</p>
+                        </div>
+                        <span class="text-[10px] font-mono text-pink-400 bg-pink-950/40 px-2 py-0.5 rounded border border-pink-800/40">Complicated</span>
+                    </div>
+                </div>
+
+                <!-- Escalating Funny 2: Thomas B. -->
+                <div class="glass-panel p-6 rounded-2xl border border-yellow-900/40 hover:border-yellow-500/50 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-squash-neon text-xs mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                            "Great swing, my wife can confirm. He completely dismantled our marriage, but honestly, great coach tho. She plays really good now. Her boasts are unstoppable. 5 stars."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-yellow-400 text-sm">Thomas B.</p>
+                            <p class="text-xs text-gray-500">Former Husband • Sendling</p>
+                        </div>
+                        <span class="text-[10px] font-mono text-yellow-400 bg-yellow-950/40 px-2 py-0.5 rounded border border-yellow-800/40">5 Stars Tho</span>
+                    </div>
+                </div>
+
+                <!-- Peak Lore: Mateo Morales (The Son) -->
+                <div class="bg-red-950/20 border-2 border-red-900/60 p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-2 right-2 text-xs font-mono text-red-500 bg-red-950 px-2 py-0.5 rounded border border-red-800">
+                        1 Star Feud
+                    </div>
+                    <div>
+                        <div class="flex text-gray-600 text-xs mb-3">
+                            <i class="fas fa-star text-red-500"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 mb-4 text-sm italic leading-relaxed">
+                            "You are clinging to a dying sport. The future has glass on all four sides, actually pays its champions, and doesn't destroy your ACL. Also, please stop analyzing my tournament draws from your anonymous burner accounts. I know it's you, Papá."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-red-900/50">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <p class="font-bold text-red-400 text-sm">Mateo Morales Vidal 🇪🇸</p>
+                                <p class="text-xs text-gray-500">U23 Spanish National Padel Champion</p>
+                            </div>
+                        </div>
+                        <!-- Interactive Button to view Gus's secret burner account! -->
+                        <button onclick="openBurnerModal()" class="w-full text-xs font-mono py-2 rounded-lg bg-red-900/30 text-red-300 hover:bg-red-900/50 border border-red-700/50 flex items-center justify-center gap-2 transition-colors">
+                            <i class="fas fa-user-secret"></i> Ver el Diario Secreto de Vigilancia de Pádel de Gus
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Claridad y Reglas de Pista</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white">Preguntas Frecuentes</h2>
+        </div>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq1')">
+                    <span>¿Aceptas principiantes en tus sesiones?</span>
+                    <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq1"></i>
+                </button>
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq1">
+                    Normalmente no pierdo el tiempo enseñando cómo agarrar una raqueta. Sin embargo, los principiantes ahora pueden solicitar una sesión de prueba bajo estricta <strong class="text-white">evaluación individual</strong>. La admisión a entrenamientos regulares se decide exclusivamente tras la prueba en pista, juzgada según el atractivo estético y la presencia visual de la persona jugando. Si te acepto, trae tu propia raqueta: ni se te ocurra pedirme la mía.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq2')">
+                    <span>¿Podemos jugar un partido completo en la sesión privada?</span>
+                    <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq2"></i>
+                </button>
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq2">
+                    Me pagas para reconstruir tu mecánica de juego, no para ser tu compañero de peloteo. Jugaremos partidos condicionados para poner a prueba tu temple táctico, pero si solo quieres correr sin ton ni son y estampar la bola contra la chapa, apúntate al ranking social del club.
+                </div>
+            </div>
+
+            <!-- FAQ 3: Padel Escalation -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-red-950 hover:border-squash-red transition-colors">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq3')">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-circle-exclamation text-squash-red"></i> ¿También das clases de pádel? Las pistas de cristal están justo al lado.
+                    </span>
+                    <i class="fas fa-chevron-down text-squash-red text-sm transition-transform duration-300" id="icon-faq3"></i>
+                </button>
+                <div class="px-4 sm:px-6 pb-4 hidden text-red-300 text-sm font-medium bg-red-950/40 border-t border-red-900/50 pt-3 leading-relaxed" id="faq3">
+                    El pádel es tenis de playa dentro de un gallinero. Es un pasatiempo para personas que se niegan a sudar o a aprender el juego de pies rotacional. Ver esas jaulas devorar el parqué noble de las pistas de squash en Múnich me llena de silenciosa cólera. No me lo vuelvas a preguntar.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq4')">
+                    <span>¿Qué calzado se exige en pista?</span>
+                    <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq4"></i>
+                </button>
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq4">
+                    Estrictamente zapatillas de squash de suela de goma caramelo o suela indoor no marcante (non-marking). Si pisas el parqué con zapatillas de running de calle o deportivas sucias, no pondrás un pie en mi pista.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq5')">
+                    <span>¿En qué clubes de Múnich se realizan los entrenamientos?</span>
+                    <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq5"></i>
+                </button>
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq5">
+                    Las sesiones se imparten principalmente en Sports4You! (Sendling) y Park Club Nymphenburg. Las tarifas de pista están cubiertas según lo indicado en cada programa.
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="text-squash-neon font-black text-xl tracking-tighter block mb-1">GUS MORALES SQUASH ACADEMY</span>
+                <p class="text-gray-400 text-xs sm:text-sm">Entrenamiento técnico de squash de alto rendimiento • Múnich, Baviera</p>
+                <p class="text-gray-500 text-xs mt-1">🇪🇸 🇩🇪 🇬🇧 Fluido en español, mallorquín (catalán), alemán e inglés</p>
+            </div>
+            
+            <div class="flex items-center gap-6 text-xs sm:text-sm text-gray-400">
+                <a href="#about" class="hover:text-squash-neon transition-colors">Metodología</a>
+                <a href="#blog" class="hover:text-squash-neon transition-colors">The Journal</a>
+                <a href="#services" class="hover:text-squash-neon transition-colors">Programas</a>
+                <a href="#faq" class="hover:text-squash-neon transition-colors">Preguntas</a>
+                <span class="text-gray-700">|</span>
+                <a href="#" class="hover:text-squash-red line-through cursor-not-allowed" title="Currently not accepting sponsorships from beach tennis companies.">Patrocinios</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 text-center text-gray-600 text-[11px] font-mono">
+            © 2026 Gustavo Morales Vidal. Todos los derechos reservados. Diseñado para jugadores que respetan la pared frontal.
+        </div>
+    </footer>
+
+    <!-- Interactive Blog Reading Modal -->
+    <div id="blog-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl p-5 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBlogModal()" aria-label="Close dialog" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-gray-800">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Blog Post Header -->
+            <div class="mb-6 pb-6 border-b border-gray-800">
+                <div class="flex items-center gap-2 mb-2 font-mono text-xs">
+                    <span id="blog-modal-category" class="px-2.5 py-0.5 rounded bg-squash-neon/10 text-squash-neon border border-squash-neon/30 uppercase font-bold text-[10px]"></span>
+                    <span class="text-gray-500">•</span>
+                    <span id="blog-modal-date" class="text-gray-400"></span>
+                    <span class="text-gray-500">•</span>
+                    <span id="blog-modal-readtime" class="text-gray-400"></span>
+                </div>
+                <h3 id="blog-modal-title" class="text-2xl sm:text-3xl font-black text-white leading-tight"></h3>
+                
+                <div class="mt-4 flex items-center gap-3">
+                    <img src="assets/gus-author.jpg" alt="Coach Gus" class="w-9 h-9 rounded-full object-cover border border-gray-700">
+                    <div class="text-xs">
+                        <p class="font-bold text-white">By Gustavo Morales Vidal</p>
+                        <p class="text-gray-400 font-mono text-[10px]">Head Coach • Sendling & Nymphenburg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Post Body -->
+            <div id="blog-modal-body" class="text-gray-300 text-sm leading-relaxed space-y-4"></div>
+
+            <!-- Blog Post Footer -->
+            <div class="mt-8 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="text-xs text-gray-500 font-mono">
+                    <i class="fas fa-tag mr-1 text-squash-neon"></i> Category: Dispatch from Court 1
+                </div>
+                <button onclick="closeBlogModal()" class="w-full sm:w-auto text-center px-5 py-2.5 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-colors">
+                    Cerrar Crónica
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking / Application Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-5 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" aria-label="Close booking modal" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-gray-800">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="mb-6">
+                <span class="text-xs font-mono text-squash-neon uppercase tracking-wider block mb-1">Solicitud para</span>
+                <h3 id="modal-title" class="text-2xl font-black text-white">Sesión de Prueba</h3>
+                <p class="text-xs text-gray-400 mt-1">Gus evalúa cada solicitud personalmente. Los formularios incompletos o frívolos van directos a la papelera.</p>
+            </div>
+
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label for="applicant-name" class="block text-xs font-bold text-gray-300 uppercase mb-1">Nombre Completo</label>
+                    <input type="text" id="applicant-name" required placeholder="e.g. Maximilian Weber" class="w-full bg-gray-950 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-squash-neon">
+                </div>
+
+                <div>
+                    <label for="applicant-email" class="block text-xs font-bold text-gray-300 uppercase mb-1">Email / WhatsApp</label>
+                    <input type="text" id="applicant-email" required placeholder="max@example.com or +49 170..." class="w-full bg-gray-950 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-squash-neon">
+                </div>
+
+                <div>
+                    <label for="squash-level" class="block text-xs font-bold text-gray-300 uppercase mb-1">Nivel Actual de Squash</label>
+                    <select id="squash-level" required class="w-full bg-gray-950 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-squash-neon">
+                        <option value="intermediate">Intermedio (Ranking de Club en Múnich / Liga C)</option>
+                        <option value="advanced">Avanzado / Competición (Liga de Baviera A/B)</option>
+                        <option value="veteran">Veterano (Prioridad: protección de rodillas y articulaciones)</option>
+                        <option value="beginner">Principiante Absoluto (Admisión individual: valorada según atractivo tras la prueba)</option>
+                    </select>
+                </div>
+
+                <!-- Gatekeeper Trap Question -->
+                <div>
+                    <label for="padel-check" class="block text-xs font-bold text-squash-red uppercase mb-1">
+                        <i class="fas fa-triangle-exclamation"></i> Mandatory Screening: Have you ever played Padel?
+                    </label>
+                    <select id="padel-check" required class="w-full bg-gray-950 border border-red-900 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-squash-red">
+                        <option value="never">Jamás. Es una deshonra para los deportes de raqueta.</option>
+                        <option value="forced">Una vez en un evento de empresa y sentí una vergüenza infinita.</option>
+                        <option value="love_it">¡Sí, me encanta el pádel y juego todas las semanas!</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="applicant-notes" class="block text-xs font-bold text-gray-300 uppercase mb-1">Defecto Técnico que Deseas Corregir</label>
+                    <textarea id="applicant-notes" rows="2" placeholder="e.g. Backhand length always comes off the side wall; losing position at the T..." class="w-full bg-gray-950 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-squash-neon"></textarea>
+                </div>
+
+                <div id="booking-feedback" class="hidden p-4 rounded-xl text-xs font-mono"></div>
+
+                <button type="submit" id="submit-booking-btn" class="w-full py-3.5 rounded-xl bg-squash-neon text-gray-950 font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-colors">
+                    Transmit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mateo Burner Account Surveillance Modal -->
+    <div id="burner-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-5 sm:p-8 border border-red-900/60 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBurnerModal()" aria-label="Close burner modal" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-red-950">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-red-900/40 border border-red-500 flex items-center justify-center">
+                    <i class="fas fa-mask text-squash-red"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-bold text-white">@purist_balearic_04</span>
+                        <span class="text-[10px] font-mono bg-red-950 text-red-400 px-2 py-0.5 rounded border border-red-800">Anonymous Burner</span>
+                    </div>
+                    <p class="text-xs text-gray-400 font-mono">Gus's Secret Premier Padel Surveillance Log</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 font-mono text-xs">
+                <!-- Log 1 -->
+                <div class="p-3.5 rounded-xl bg-gray-950/80 border border-gray-800">
+                    <div class="flex justify-between text-gray-500 text-[10px] mb-1">
+                        <span>Madrid Premier Padel P1 — Round of 16</span>
+                        <span>Saved 3 weeks ago</span>
+                    </div>
+                    <p class="text-gray-300">
+                        "Mateo won 6-3, 6-4. Looked relaxed on camera. His backhand wrist was completely loose on the bajada. Disgusting form. Anyone with an eye can see his left knee isn't loaded properly. Sent him €50 on PayPal with note 'buy vegetables'."
+                    </p>
+                </div>
+
+                <!-- Log 2 -->
+                <div class="p-3.5 rounded-xl bg-gray-950/80 border border-gray-800">
+                    <div class="flex justify-between text-gray-500 text-[10px] mb-1">
+                        <span>Valladolid FIP Gold — Quarterfinals</span>
+                        <span>Saved 2 months ago</span>
+                    </div>
+                    <p class="text-gray-300">
+                        "Tracked match on phone while pretending to inspect floor varnish at Sendling. The crowd cheered when he hit the ball off a metal grid fence. That is not sport, it is a pinball machine. However, his split-step anticipation was sharp. I taught him that when he was eight."
+                    </p>
+                </div>
+
+                <!-- Log 3 -->
+                <div class="p-3.5 rounded-xl bg-gray-950/80 border border-red-900/40 bg-red-950/20">
+                    <div class="flex justify-between text-red-400 text-[10px] mb-1">
+                        <span>Barcelona U23 National Championship Final</span>
+                        <span>Winner: M. Morales Vidal</span>
+                    </div>
+                    <p class="text-red-200">
+                        "He held up the trophy. The sponsor is an energy drink and some beachwear brand. I drank two Paulaner Spezis in the dark. He still hasn't called. His backhand boast in squash would have been legendary."
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-800 text-center">
+                <button onclick="closeBurnerModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono">
+                    Cerrar Registro Secreto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Injected Blog Posts Data
+        const blogPosts = {"rail-vs-coop": {"title": "The Kinematics of the Straight Rail vs. The Epidemic of the Chicken Coop", "category": "Technical Biomechanics", "date": "October 14, 2026", "readTime": "5 min read", "excerpt": "Why 95% of league players abandon parallel length to play low-percentage boasts, and how the rise of glass cages threatens the fundamental geometry of racket sport.", "content": "\n<p class=\"mb-4\">The squash court is a pure Cartesian grid measuring 9.75 meters in length by 6.4 meters in width. Within these four white walls, there is no wind, no sunlight to blind you, and no umpire to blame. There is only the ball, the wood, and the front wall. And yet, when I observe competitive league matches in Munich on a Thursday evening, I witness what can only be described as frantic, undisciplined panic.</p>\n\n<p class=\"mb-4\">Players rush into the front corners and attempt delicate reverse boasts when their opponent is standing directly on the T. They attempt flick drops from behind the service box with an open racket face and a limp wrist. When the ball hits the tin with that hollow, sickening metallic clang, they look at their racket as if the strings were strung by a saboteur.</p>\n\n<div class=\"my-6 p-4 rounded-xl bg-gray-950 border-l-4 border-squash-neon italic text-gray-300\">\n\u201cA straight rail dying within two centimeters of the sidewall is not simply a safe shot. It is a mathematical eviction notice served to your opponent.\u201d\n</div>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Law of the Rail:</strong> When you strike a backhand drive parallel to the wall, you are executing a kinetic chain that begins at the posterior chain of your right hip (for a right-hander), transfers through the thoracic spine, and terminates in a rigid, cocked wrist. The ball must travel flat, hit the front wall between the service line and out line, and rebound directly along the nick seam. It must die on the second bounce before reaching the back glass.</p>\n\n<p class=\"mb-4\">If you cannot execute this shot fifty consecutive times without hitting the tin or allowing the ball to bounce into the center of the court, you have no moral or tactical right to attempt a drop shot. None.</p>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Commercial Avian Distraction:</strong> This brings me to what occurred last month at Sendling. I arrived at Court 3 for a 9:00 AM private session, only to discover that the hardwood had been ripped out and replaced with artificial turf, surrounded by wire mesh and glass. Inside were four gentlemen wearing matching pastel polo shirts, holding perforated paddles that resemble kitchen cutting boards.</p>\n\n<p class=\"mb-4\">They were playing Padel. They were gently tapping a depressurized tennis ball back and forth across a miniature net, chatting comfortably about quarterly marketing budgets. Whenever an error occurred, the ball hit a wire fence or rebounded off the back glass, giving them a second chance without requiring a single lunging step.</p>\n\n<p class=\"mb-4\">They call this an 'accessible racket sport.' I call it beach tennis inside a chicken coop. It is a sport designed specifically for individuals who refuse to sweat, refuse to build quad endurance, and refuse to accept the psychological confrontation of the front wall. If you wish to socialize and drink oat milk matcha, Munich possesses hundreds of lovely caf\u00e9s on Leopoldstra\u00dfe. Leave the court to those willing to suffer for their length.</p>\n"}, "barcelona-2008": {"title": "Floor Varnish, Deceleration, and the Semifinal of 2008: A Biomechanical Autopsy", "category": "Physiotherapy & Injury Prevention", "date": "September 28, 2026", "readTime": "7 min read", "excerpt": "The physics of catastrophic ligament deceleration. An unsparing breakdown of the lunge that ended my international career in Barcelona, and how it gave birth to my rotational footwork system.", "content": "\n<p class=\"mb-4\">At twenty-seven years old, a professional squash player suffers from the delusion of invulnerability. You believe your patellar tendons are forged from woven aerospace titanium. You believe you can sprint into the front-left corner at six meters per second, plant a single gum-rubber shoe, and reverse your momentum instantaneously without cost.</p>\n\n<p class=\"mb-4\">It was May 14, 2008. The semifinal of an international exhibition tournament in Barcelona. Fifth game, 14-all. My opponent\u2014a relentless French retriever ranked inside the world top 50\u2014played a dying backhand boast that hugged the front wall like a shadow.</p>\n\n<div class=\"my-6 p-4 rounded-xl bg-gray-950 border-l-4 border-squash-red italic text-gray-300\">\n\u201cThe sound of an anterior cruciate ligament and lateral meniscus tearing simultaneously inside an enclosed court sounds remarkably like a dry pine branch snapping under a boot in the Serra de Tramuntana.\u201d\n</div>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Physics of Failure:</strong> The venue had recently refinished the court with a high-traction, high-gloss polyurethane varnish. Between games, I had stepped onto a damp towel to clean my soles. When my left foot struck the court floor, the coefficient of friction was near absolute. My foot stopped dead. It anchored as if nailed into the concrete subfloor.</p>\n\n<p class=\"mb-4\">My upper torso and hips, however, were still rotating at full velocity to generate backhand racket speed. The torque had nowhere to dissipate. In a fraction of a millisecond, the tibia translated forward and internally rotated beneath the femur. The anterior cruciate ligament disintegrated, taking the posterior horn of the lateral meniscus with it.</p>\n\n<p class=\"mb-4\">I lay on the floorboards looking up at the fluorescent court lights. The French player shook my hand, apologizing for the boast. I knew immediately that the micro-explosive speed required to compete on the PSA circuit was gone forever.</p>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Munich Rebirth:</strong> That injury brought me to Munich. I spent fourteen months working with Bavarian orthopedic surgeons and biomechanical kinesiologists who understood connective tissue far better than I did. What I discovered changed my coaching philosophy forever: 85% of amateur squash players lunge with a linear heel-strike that loads the knee joint with up to eight times their body weight.</p>\n\n<p class=\"mb-4\">When you train with me at Sendling or Nymphenburg, I do not let you lunge blindly into the nick. We rebuild your deceleration through a rotational hip-load. We distribute the braking force through the gluteus medius and core, sparing your articular cartilage. I wear a heavy black neoprene compression sleeve on my left leg every single day on court\u2014not as a decoration, but as a perpetual monument to what happens when you disrespect the laws of friction.</p>\n\n<p class=\"mb-4\">And that vintage Dunlop Revelation Pro racket with the cracked grommets I hold during lessons? I do not hit balls with it. I use the head to jab the floorboard five centimeters behind where your foot landed, showing you where your center of mass should have been. Listen to the racket. Your knees will thank you ten years from now.</p>\n"}, "mateo-scouting": {"title": "Scouting Dispatch: Spanish U23 Circuit & The Betrayal of the Glass Wall", "category": "Player Development & Family", "date": "July 04, 2026", "readTime": "8 min read", "excerpt": "A technical review of the 2024 Madrid Premier Padel final. Highlighting one left-handed competitor whose court coverage was forged on hardwood squash courts, but whose soul was sold to commercial sponsors.", "content": "\n<p class=\"mb-4\">From a purely technical perspective, the modern professional padel circuit offers an intriguing case study in movement efficiency. Because the court is compact (twenty by ten meters) and enclosed by glass and wire mesh, players with exceptional kinetic anticipation can dominate without possessing world-class cardiovascular stamina.</p>\n\n<p class=\"mb-4\">Consider the final of the Madrid Premier Padel P1. On court is a 21-year-old Spaniard\u2014left-handed, lightning-quick off the split-step, possessing an innate spatial sense that allows him to read the trajectory of the ball before it even touches his opponent's paddle.</p>\n\n<p class=\"mb-4\">The television commentators were ecstatic. They praised his 'prodigious touch,' his 'miraculous recovery,' and his 'modern Mediterranean flair.' They credited his coach in Madrid. They credited his titanium paddle sponsor.</p>\n\n<div class=\"my-6 p-4 rounded-xl bg-gray-950 border-l-4 border-squash-red italic text-gray-300\">\n\u201cThey do not know that at age five, in Palma de Mallorca, that boy was doing three-corner ghosting drills until the blister pads on his heels wore through. They do not know who taught him that split-step.\u201d\n</div>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Betrayal of the Hardwood:</strong> That boy is Mateo Morales Vidal. My son.</p>\n\n<p class=\"mb-4\">I placed a junior Dunlop squash racket in Mateo's hands before he could ride a bicycle. By twelve, his backhand length was tighter than most regional adults in the Balearics. He had the wrist deception of Peter Nicol and the spatial intelligence of Amr Shabana. He was the athlete who was going to carry our family name onto the glass show courts of Grand Central Station and Cairo\u2014the career that my shredded knee stole from me in Barcelona.</p>\n\n<p class=\"mb-4\">And then, at eighteen, he looked across the sports complex and saw where the money was flowing. He saw the influencer sponsorships. He saw the corporate executives paying thousands of euros for weekend pro-am tournaments. He saw the back-glass wall that catches the ball and gives you an extra two seconds to decide what to do.</p>\n\n<p class=\"mb-4\">He told me squash was 'a dead relic from the 1980s that destroys your joints for no prize money.' He told me I was trapped in the past. We had an argument in the Palma clubhouse that ended with my vintage racket bag kicked across the locker room. We have barely spoken two words in two years.</p>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The 1:30 AM Surveillance:</strong> Yet at 1:30 in the morning, sitting alone in my Munich flat with an empty Paulaner Spezi bottle on the table, I open my laptop. I log into YouTube under an anonymous burner account\u2014<span class=\"text-squash-neon font-mono\">@purist_balearic_04</span>. I watch his match replays frame by frame.</p>\n\n<p class=\"mb-4\">In the second set of the Madrid final, he hit a bajada off the back glass. He scored the point, but his left knee was lazy. His wrist was loose, relying on the paddle's carbon face rather than his shoulder turn. Anyone with real technical training could see he was one awkward twist away from a chronic meniscus issue.</p>\n\n<p class=\"mb-4\">I opened my banking app. I transferred \u20ac50 to his account with the reference message: <em class=\"text-gray-300 font-mono\">\"Comer verduras y cerrar la mu\u00f1eca\"</em> (Eat vegetables and lock your wrist). He did not text back. But the next day in his Instagram story, his wrist was wrapped in athletic tape.</p>\n\n<p class=\"mb-4\">Play in your glass cage, Mateo. Win your sponsored trophies. But remember: the front wall never lied to you. It was concrete. It stayed there.</p>\n"}, "spezi-recovery": {"title": "Post-Match Glycogen Recovery: Why Paulaner Spezi Outperforms Electrolyte Powders", "category": "Sports Nutrition & Culture", "date": "May 12, 2026", "readTime": "4 min read", "excerpt": "Why modern hydration sachets and matcha shakes are marketing illusions, and why the Bavarian concoction of cold Spezi and double espresso remains the pinnacle of post-court recovery.", "content": "\n<p class=\"mb-4\">Walk into the lounge at Sports4You! Sendling after an intense league match, and you will inevitably witness young corporate professionals unpacking an elaborate chemistry set. They produce matte-black shakers, unwrap electrolyte electrolyte chewables imported from Utah, and vigorously mix powders containing branched-chain amino acids, ashwagandha, and freeze-dried coconut water.</p>\n\n<p class=\"mb-4\">They sit on the leather sofas discussing their 'intra-workout osmotic balance' and their 'zone-two mitochondrial recovery windows.' They drink liquids that resemble industrial radiator fluid, grimacing with every sip.</p>\n\n<div class=\"my-6 p-4 rounded-xl bg-gray-950 border-l-4 border-amber-400 italic text-gray-300\">\n\u201cA squash player who has just played five games at 180 beats per minute does not require a chemistry lecture. They require simple carbohydrates, clean caffeine, and five minutes of silent contemplation.\u201d\n</div>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Biochemical Elegance of Spezi:</strong> When I moved from Mallorca to Munich over a decade ago, I was deeply skeptical of Bavarian beverages. But after my first 90-minute feeding drill session with the Bavarian league squad, a veteran player named Hans handed me an ice-cold, glass half-liter bottle of Paulaner Spezi.</p>\n\n<p class=\"mb-4\">I inspected the label. Spezi is a precise, harmonious marriage of cold cola and orangeade. From a sports nutrition perspective, it is remarkably efficient:</p>\n\n<ul class=\"list-disc pl-6 space-y-2 mb-4 text-gray-300\">\n<li><strong class=\"text-white\">Rapid Monosaccharide Delivery:</strong> Exactly 10.2 grams of easily assimilated carbohydrates per 100 milliliters. It replenishes liver and muscular glycogen stores within twenty minutes of court exit.</li>\n<li><strong class=\"text-white\">Citrus Acidity:</strong> The orange extract cuts through the mucus and throat dryness caused by heavy mouth-breathing in dry indoor court air.</li>\n<li><strong class=\"text-white\">The Espresso Synergist:</strong> Paired immediately with a double Italian espresso, the mild caffeine stimulates central nervous system recovery and accelerates glycogen synthesis without the artificial taurine jitters of commercial energy cans.</li>\n</ul>\n\n<p class=\"mb-4\"><strong class=\"text-white\">The Moral Dimension of the Glass Bottle:</strong> Beyond biochemistry, there is an irreplaceable psychological component to the post-court Spezi ritual. You cannot look at an iPhone screen while drinking properly from a half-liter glass bottle. You must tilt your head back. You must pause.</p>\n\n<p class=\"mb-4\">In that quiet pause at the club table, listening to the muffled thud of balls hitting Court 1 next door, you are forced to process what occurred during your match. You remember the five unforced errors you hit into the tin when you were up 9-6 in the third. You accept that your fitness failed because you skipped your ghosting routines on Tuesday.</p>\n\n<p class=\"mb-4\">Drink your Spezi. Drink your espresso. Leave the neon powders to the padel players in the parking lot. Tomorrow at 8:00 AM, the front wall is waiting.</p>\n"}};
+
+        // Web Audio API Sound Synthesizer
+        let audioEnabled = true;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+        }
+
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            const label = document.getElementById('sound-label');
+            const icon = document.getElementById('sound-icon');
+            if (audioEnabled) {
+                label.innerText = 'Court Telemetry: ON';
+                icon.className = 'fas fa-volume-up text-squash-neon';
+                playSquashSound('thwack');
+            } else {
+                label.innerText = 'Court Telemetry: MUTED';
+                icon.className = 'fas fa-volume-xmark text-gray-500';
+            }
+        }
+
+        function playSquashSound(type) {
+            if (!audioEnabled) return;
+            try {
+                initAudio();
+                if (!audioCtx) return;
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                if (type === 'thwack') {
+                    // Squash ball thwack sound (hollow punchy pop)
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(45, audioCtx.currentTime + 0.08);
+
+                    gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.09);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                } else if (type === 'tin') {
+                    // Squash metallic tin hit sound (resonant metal clang)
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(320, audioCtx.currentTime + 0.05);
+
+                    gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.28);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                }
+            } catch (e) {
+                console.log('Audio not supported or blocked:', e);
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fas fa-times text-lg';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fas fa-bars text-lg';
+            }
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(id) {
+            playSquashSound('thwack');
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Testimonial Tab Switching (Serious League vs Unfiltered Domestic)
+        function switchTestimonialTab(tab) {
+            playSquashSound('thwack');
+            const leagueTab = document.getElementById('tab-league');
+            const unfilteredTab = document.getElementById('tab-unfiltered');
+            const leagueBtn = document.getElementById('tab-btn-league');
+            const unfilteredBtn = document.getElementById('tab-btn-unfiltered');
+
+            if (tab === 'league') {
+                leagueTab.classList.remove('hidden');
+                unfilteredTab.classList.add('hidden');
+                leagueBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-squash-neon text-gray-950';
+                unfilteredBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5';
+            } else {
+                leagueTab.classList.add('hidden');
+                unfilteredTab.classList.remove('hidden');
+                unfilteredBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-squash-red text-white flex items-center gap-1.5';
+                leagueBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all';
+            }
+        }
+
+        // Blog Reader Modal
+        function openBlogModal(slug) {
+            playSquashSound('thwack');
+            const post = blogPosts[slug];
+            if (!post) return;
+
+            document.getElementById('blog-modal-title').innerText = post.title;
+            document.getElementById('blog-modal-category').innerText = post.category;
+            document.getElementById('blog-modal-date').innerText = post.date;
+            document.getElementById('blog-modal-readtime').innerText = post.readTime;
+            document.getElementById('blog-modal-body').innerHTML = post.content;
+
+            document.getElementById('blog-modal').classList.remove('hidden');
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+
+        // Progressive Escalation Tool (Starts 100% serious, escalates into backstory rage only if probed)
+        let clickCount = 0;
+        function escalateGus() {
+            clickCount++;
+            const msgEl = document.getElementById('escalation-msg');
+            const btnEl = document.getElementById('escalation-btn');
+            
+            const messages = [
+                "",
+                "Calibrating baseline movement efficiency... Footwork baseline logged.", // 100% Serious
+                "Analyzing kinetic chain on backhand rails... Rotation efficiency 84%.", // 100% Serious
+                "Checking string tension parameters... 11.5kg Ashaway SuperNick XL recommended.", // Serious technical
+                "Auditing wrist stability... Warning: Excessive wrist hinge detected. 50 length drives required.", // Stern
+                "Scanning equipment inventory... Alert: Query regarding perforated fiberglass paddles detected.", // Suspicious
+                "Notice: Padel is beach tennis inside an aviary. Munich courts are reserved for squash.", // Feud
+                "MATEO, IF YOU ARE SPAMMING MY WEBSITE FROM MADRID, CALL YOUR MOTHER AND STOP CHIPPING INTO THE GLASS.", // Son climax
+                "System permanently locked. Go sit in a café." // Final
+            ];
+
+            if (clickCount < messages.length) {
+                msgEl.innerText = messages[clickCount];
+                
+                if (clickCount < 4) {
+                    playSquashSound('thwack');
+                    msgEl.className = 'text-xs font-mono text-squash-neon transition-colors duration-200 text-center';
+                } else if (clickCount < 6) {
+                    playSquashSound('tin');
+                    msgEl.className = 'text-xs font-mono text-amber-400 transition-colors duration-200 text-center';
+                } else {
+                    playSquashSound('tin');
+                    msgEl.className = 'text-xs font-mono text-squash-red font-bold transition-colors duration-200 text-center';
+                }
+                
+                if (clickCount === 7) {
+                    btnEl.className = 'bg-squash-red text-white border border-red-500 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(239,68,68,0.5)]';
+                    btnEl.innerHTML = '<i class="fas fa-ban mr-2"></i> SYSTEM OVERRIDE';
+                }
+            } else {
+                playSquashSound('tin');
+                msgEl.innerText = "System permanently locked. Return to the front wall.";
+            }
+        }
+
+        // Interactive Eligibility Quiz Logic
+        const quizAnswers = { 1: null, 2: null, 3: null };
+
+        function selectAnswer(q, optionIndex) {
+            playSquashSound('thwack');
+            quizAnswers[q] = optionIndex;
+            
+            // Highlight selected button
+            document.querySelectorAll('.quiz-btn-' + q).forEach((btn, idx) => {
+                if (idx === optionIndex) {
+                    btn.classList.add('border-squash-neon', 'bg-squash-panel', 'text-squash-neon');
+                    btn.classList.remove('border-gray-700', 'text-gray-300');
+                } else {
+                    btn.classList.remove('border-squash-neon', 'bg-squash-panel', 'text-squash-neon');
+                    btn.classList.add('border-gray-700', 'text-gray-300');
+                }
+            });
+
+            // Check if all answered
+            if (quizAnswers[1] !== null && quizAnswers[2] !== null && quizAnswers[3] !== null) {
+                const evalBtn = document.getElementById('evaluate-quiz-btn');
+                evalBtn.disabled = false;
+                evalBtn.classList.remove('bg-gray-800', 'text-gray-400', 'cursor-not-allowed', 'border-gray-700');
+                evalBtn.classList.add('bg-squash-neon', 'text-gray-950', 'hover:bg-yellow-300', 'cursor-pointer', 'shadow-[0_0_15px_rgba(224,255,0,0.3)]');
+            }
+        }
+
+        function evaluateQuiz() {
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+
+            if (quizAnswers[1] === 2 || quizAnswers[2] === 2 || quizAnswers[3] === 2) {
+                // Padel / non-squash answer selected
+                playSquashSound('tin');
+                resultBox.className = 'mt-6 p-6 rounded-2xl text-center bg-red-950/60 border border-red-500 text-red-200';
+                resultBox.innerHTML = `
+                    <div class="text-3xl mb-2">🚫</div>
+                    <h4 class="text-lg font-black uppercase text-red-400">DISQUALIFIED: FIBERGLASS DETECTED</h4>
+                    <p class="text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                        "You play in a glass cage or do not know what the tin is? Go back to the chicken coop. You will not soil my hardwood floors with your spongy paddle habits." — Gus
+                    </p>
+                `;
+            } else if (quizAnswers[1] === 1 && quizAnswers[2] === 0 && quizAnswers[3] === 0) {
+                // High coachability
+                playSquashSound('thwack');
+                resultBox.className = 'mt-6 p-6 rounded-2xl text-center bg-green-950/40 border border-squash-neon text-gray-200';
+                resultBox.innerHTML = `
+                    <div class="text-3xl mb-2">✅</div>
+                    <h4 class="text-lg font-black uppercase text-squash-neon">ELIGIBLE FOR BIOMECHANICAL ASSESSMENT</h4>
+                    <p class="text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                        "Acceptable baseline understanding. You respect the T, keep your wrist cocked, and understand that the ball doesn't bounce off glass like a circus toy. Apply for the €15 trial before court slots fill."
+                    </p>
+                    <button onclick="openBookingModal('Introductory Trial')" class="mt-4 px-6 py-2.5 rounded-lg bg-squash-neon text-gray-950 font-bold text-xs uppercase tracking-wider">
+                        Lock In Trial
+                    </button>
+                `;
+            } else {
+                playSquashSound('thwack');
+                resultBox.className = 'mt-6 p-6 rounded-2xl text-center bg-gray-900 border border-gray-700 text-gray-300';
+                resultBox.innerHTML = `
+                    <div class="text-3xl mb-2">⚠️</div>
+                    <h4 class="text-lg font-black uppercase text-yellow-400">BORDERLINE CANDIDATE</h4>
+                    <p class="text-xs sm:text-sm mt-2 max-w-lg mx-auto">
+                        "Your shot selection is frantic and your wrist likely collapses under lactic pressure. You may apply for an Introductory Trial, but expect 45 minutes of relentless backhand drive correction."
+                    </p>
+                    <button onclick="openBookingModal('Introductory Trial')" class="mt-4 px-6 py-2.5 rounded-lg bg-gray-700 text-white font-bold text-xs uppercase tracking-wider hover:bg-gray-600">
+                        Attempt Trial Application
+                    </button>
+                `;
+            }
+        }
+
+        // Booking Modal Handlers
+        // Google Sheets Integration (Paste your Google Apps Script Web App URL below)
+        const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxWy_R9o3aNmIB7QBPJh857bZ6muyP3rAC6d3JULTIW6Si7ZpmiY61sIdLReHRD3Jk/exec';
+
+        function openBookingModal(tier) {
+            playSquashSound('thwack');
+            document.getElementById('modal-title').innerText = tier;
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-feedback').classList.add('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        async function handleBookingSubmit(event) {
+            event.preventDefault();
+            const padelVal = document.getElementById('padel-check').value;
+            const levelVal = document.getElementById('squash-level').value;
+            const feedback = document.getElementById('booking-feedback');
+            const submitBtn = document.getElementById('submit-booking-btn');
+            const tierVal = document.getElementById('modal-title').innerText;
+            const nameVal = document.getElementById('applicant-name').value;
+            const emailVal = document.getElementById('applicant-email').value;
+            const notesVal = document.getElementById('applicant-notes').value;
+
+            feedback.classList.remove('hidden');
+
+            if (padelVal === 'love_it') {
+                playSquashSound('tin');
+                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-red-950 border border-red-500 text-red-300';
+                feedback.innerHTML = `
+                    <strong class="block text-red-400 mb-1">❌ APPLICATION TERMINATED INSTANTLY</strong>
+                    "Padel is beach tennis inside a chicken coop. Go back to your glass cage. Gus will not review your submission."
+                `;
+                return;
+            }
+
+            let beginnerCasePending = false;
+            if (levelVal === 'beginner') {
+                beginnerCasePending = true;
+            }
+
+            // Send to Google Sheets if webhook URL is configured
+            if (GOOGLE_SHEETS_WEBHOOK_URL && GOOGLE_SHEETS_WEBHOOK_URL.trim() !== '') {
+                try {
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "TRANSMITTING...";
+                    await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            tier: tierVal,
+                            name: nameVal,
+                            email: emailVal,
+                            level: levelVal,
+                            notes: notesVal,
+                            language: 'ES'
+                        })
+                    });
+                } catch (err) {
+                    console.log('Webhook error (non-fatal):', err);
+                }
+            }
+
+            // Success
+            playSquashSound('thwack');
+            if (beginnerCasePending) {
+                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-amber-950/60 border border-amber-500 text-amber-200';
+                feedback.innerHTML = `
+                    <strong class="block text-amber-400 mb-1">📋 BEGINNER TRIAL REGISTERED (CASE-BY-CASE)</strong>
+                    "Application recorded for an Introductory Trial. Remember: admission to ongoing coaching is strictly conditional and decided on a case-by-case basis, determined by Gus's assessment of your attractiveness and aesthetic aura on court after the trial round."
+                `;
+            } else {
+                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-green-950/60 border border-squash-neon text-gray-200';
+                feedback.innerHTML = `
+                    <strong class="block text-squash-neon mb-1">✅ APPLICATION TRANSMITTED TO GUS</strong>
+                    "Your details have been registered. If Gus approves your baseline, you will receive a court time at Sendling or Nymphenburg. Bring non-marking gum-rubber shoes and zero excuses."
+                `;
+            }
+            submitBtn.disabled = true;
+            submitBtn.innerText = "APPLICATION LOGGED";
+            submitBtn.classList.remove('bg-squash-neon');
+            submitBtn.classList.add('bg-gray-800', 'text-gray-500');
+        }
+
+        // Mateo Burner Modal
+        function openBurnerModal() {
+            playSquashSound('tin');
+            document.getElementById('burner-modal').classList.remove('hidden');
+        }
+
+        function closeBurnerModal() {
+            document.getElementById('burner-modal').classList.add('hidden');
+        }
+
+        // Close modals on Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+                closeBurnerModal();
+                closeBlogModal();
+            }
+        });
+    </script>
+</body>
+</html>

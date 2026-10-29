@@ -97,26 +97,28 @@
         }
     </style>
 </head>
-<body class="antialiased court-lines relative selection:bg-squash-neon selection:text-black min-h-screen flex flex-col justify-between">
+<body class="antialiased court-lines relative selection:bg-squash-neon selection:text-black min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- Top Announcement Bar / Audio & Language Switcher -->
-    <aside aria-label="Audio und Status" class="bg-gray-950/90 border-b border-gray-800 text-xs py-2 px-4 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto flex justify-between items-center text-gray-400">
-            <div class="flex items-center gap-2">
-                <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Trainingsanlagen: <span class="text-gray-200 font-medium">Sports4You! Sendling</span> & <span class="text-gray-200 font-medium">Park Club Nymphenburg</span></span>
+    <aside aria-label="Audio und Status" class="bg-gray-950/95 border-b border-gray-800 text-xs py-2 px-3 sm:px-4 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 text-gray-400">
+            <div class="flex items-center gap-2 min-w-0">
+                <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span class="truncate text-[11px] sm:text-xs">Anlagen: <span class="text-gray-200 font-medium">Sports4You!</span> & <span class="text-gray-200 font-medium">Park Club</span><span class="hidden md:inline text-gray-400"> (Sendling & Nymphenburg)</span></span>
             </div>
-            <div class="flex items-center gap-3 sm:gap-4">
+            <div class="flex items-center gap-2.5 sm:gap-4 shrink-0">
                 <!-- Language Switcher Pill -->
                 <div class="flex items-center bg-gray-900 border border-gray-700 rounded px-1.5 py-0.5 text-[11px] font-mono">
-                    <a href="index.html" class="px-1.5 py-0.2 text-gray-400 hover:text-white transition-colors" title="Switch to English">EN</a>
+                    <a href="index.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Switch to English">EN</a>
                     <span class="text-gray-600">|</span>
-                    <span class="px-1.5 py-0.2 text-squash-neon font-bold bg-gray-800 rounded">DE</span>
+                    <span class="px-1.5 py-0.5 text-squash-neon font-bold bg-gray-800 rounded">DE</span>
+                    <span class="text-gray-600">|</span>
+                    <a href="es.html" class="px-1.5 py-0.5 text-gray-400 hover:text-white transition-colors" title="Auf Spanisch wechseln">ES</a>
                 </div>
 
                 <span class="hidden sm:inline text-gray-700">|</span>
 
-                <button id="sound-toggle" onclick="toggleAudio()" class="hover:text-squash-neon transition-colors flex items-center gap-1.5 text-[11px] uppercase tracking-wider font-mono">
+                <button id="sound-toggle" onclick="toggleAudio()" aria-label="Court-Sound umschalten" class="hover:text-squash-neon transition-colors flex items-center gap-1.5 py-1 px-1.5 text-[11px] uppercase tracking-wider font-mono">
                     <i id="sound-icon" class="fas fa-volume-up text-squash-neon"></i>
                     <span id="sound-label" class="hidden sm:inline">Court-Audio: AN</span>
                 </button>
@@ -158,6 +160,8 @@
                         <a href="index.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="English">EN</a>
                         <span class="w-[1px] h-4 bg-gray-700"></span>
                         <span class="px-2.5 py-1 bg-squash-neon text-gray-950 font-black">DE</span>
+                        <span class="w-[1px] h-4 bg-gray-700"></span>
+                        <a href="es.html" class="px-2.5 py-1 text-gray-400 hover:text-white transition-colors" title="Español">ES</a>
                     </div>
 
                     <button onclick="openBookingModal('Einführungstraining')" class="bg-squash-neon text-gray-950 px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-[0_0_12px_rgba(224,255,0,0.3)]">
@@ -168,10 +172,11 @@
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-2">
                     <div class="flex items-center border border-gray-700 rounded bg-gray-900 text-xs font-mono">
-                        <a href="index.html" class="px-2 py-0.5 text-gray-400">EN</a>
-                        <span class="px-2 py-0.5 bg-squash-neon text-gray-950 font-bold">DE</span>
+                        <a href="index.html" class="px-1.5 py-0.5 text-gray-400">EN</a>
+                        <span class="px-1.5 py-0.5 bg-squash-neon text-gray-950 font-bold">DE</span>
+                        <a href="es.html" class="px-1.5 py-0.5 text-gray-400">ES</a>
                     </div>
-                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white p-2">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" class="text-gray-400 hover:text-white p-2.5 rounded-lg active:bg-gray-800 transition-colors">
                         <i class="fas fa-bars text-lg" id="mobile-icon"></i>
                     </button>
                 </div>
@@ -200,7 +205,7 @@
                 <i class="fas fa-medal"></i> Meisterhafte Biomechanik • München, Bayern
             </div>
             
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.08] tracking-tight">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.08] tracking-tight">
                 Physisches Schach bei <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-squash-neon via-yellow-200 to-green-400">180 BPM.</span>
             </h1>
@@ -210,11 +215,11 @@
             </p>
 
             <!-- Primary CTAs -->
-            <div class="pt-2 flex flex-wrap gap-4 items-center">
-                <button onclick="openBookingModal('Einführungstraining')" class="bg-squash-neon text-gray-950 px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 shadow-[0_0_20px_rgba(224,255,0,0.35)] hover:scale-[1.02] active:scale-[0.98]">
+            <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+                <button onclick="openBookingModal('Einführungstraining')" class="w-full sm:w-auto text-center bg-squash-neon text-gray-950 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 shadow-[0_0_20px_rgba(224,255,0,0.35)] hover:scale-[1.02] active:scale-[0.98]">
                     <i class="fas fa-clipboard-check mr-2"></i> Biomechanisches Probetraining
                 </button>
-                <a href="#blog" class="glass-panel text-white hover:text-squash-neon border border-gray-700 px-6 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:border-squash-neon transition-all">
+                <a href="#blog" class="w-full sm:w-auto text-center glass-panel text-white hover:text-squash-neon border border-gray-700 px-6 py-3.5 sm:py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:border-squash-neon transition-all">
                     <i class="fas fa-book-open mr-2 text-squash-neon"></i> Das Trainer-Journal lesen
                 </a>
             </div>
@@ -229,7 +234,7 @@
             </div>
 
             <!-- Authentic Credentials Badges -->
-            <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 max-w-lg">
                 <div class="glass-panel p-3 rounded-lg border border-gray-800 text-center">
                     <span class="block text-squash-neon font-black text-xl">4x</span>
                     <span class="text-[11px] text-gray-400 uppercase font-semibold">Meister Balearen</span>
@@ -266,7 +271,7 @@
                         <span class="text-base" title="Mallorca, Spanien">🇪🇸</span>
                     </div>
                     <p class="text-gray-300 text-xs font-medium">Cheftrainer • Ehemaliger Balearen-Champion • Biomechanik-Spezialist</p>
-                    <div class="mt-3 flex items-center gap-2 text-[11px] text-gray-400 font-mono">
+                    <div class="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-gray-400 font-mono">
                         <span class="px-2 py-0.5 rounded bg-gray-900/90 border border-gray-700">Sports4You! Sendling</span>
                         <span class="px-2 py-0.5 rounded bg-gray-900/90 border border-gray-700">Park Club Nymphenburg</span>
                     </div>
@@ -407,7 +412,7 @@
                 </p>
             </div>
             
-            <div class="mt-6 md:mt-0 flex items-center gap-3 bg-gray-900/80 border border-gray-800 px-4 py-2.5 rounded-xl">
+            <div class="mt-6 md:mt-0 flex items-center gap-3 bg-gray-900/80 border border-gray-800 px-4 py-2.5 rounded-xl self-start sm:self-auto">
                 <img src="assets/gus-author.jpg" alt="Coach Gus" class="w-10 h-10 rounded-lg object-cover border border-gray-700">
                 <div class="text-xs">
                     <p class="font-bold text-white">Gustavo Morales Vidal</p>
@@ -529,7 +534,7 @@
                 <span class="text-squash-neon font-mono text-xs font-bold uppercase tracking-widest block mb-2">Technisches Curriculum</span>
                 <h2 class="text-3xl sm:text-5xl font-black mb-4">Trainingsangebote</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
-                    Gustavo trainiert ambitionierte Hobbyspieler mit Leistungstief und Turnierspieler, die sich auf die bayerischen Ligen vorbereiten. Er bringt Anfängern nicht bei, wie man einen Schläger hält.
+                    Gustavo trainiert ambitionierte Hobbyspieler mit Leistungstief und Turnierspieler, die sich auf die bayerischen Ligen vorbereiten. Anfänger werden streng im Einzelfall akzeptiert – die finale Aufnahme basiert nach dem Probetraining ausschließlich auf der persönlichen Attraktivität und Ausstrahlung des Spielers auf dem Court.
                 </p>
             </div>
 
@@ -617,7 +622,7 @@
 
     <!-- Interaktive Diagnostik & Baseline-Prüfung -->
     <section id="quiz" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
-        <div class="glass-panel rounded-3xl p-8 sm:p-10 border border-gray-800 shadow-2xl relative overflow-hidden">
+        <div class="glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-gray-800 shadow-2xl relative overflow-hidden">
             <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="inline-block px-3 py-1 rounded-full bg-squash-neon/10 text-squash-neon border border-squash-neon/30 text-xs font-mono font-bold uppercase tracking-wider mb-3">
                     Biomechanischer Eignungstest
@@ -628,48 +633,48 @@
 
             <div id="quiz-container" class="space-y-6">
                 <!-- Frage 1 -->
-                <div class="glass-card p-5 rounded-xl border border-gray-800">
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
                     <p class="text-sm font-bold text-white mb-3">1. Dein Gegner schlägt eine sterbende Länge tief in die hintere linke Ecke. Was ist deine mechanische Reaktion?</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                        <button onclick="selectAnswer(1, 0)" class="quiz-btn-1 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(1, 0)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             A) Panik und ein unkontrollierter Reverse-Boast aus der Drehung.
                         </button>
-                        <button onclick="selectAnswer(1, 1)" class="quiz-btn-1 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(1, 1)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             B) T freimachen, Hüfte tief absenken, mit offenem Blatt parallele Höhe herausgraben.
                         </button>
-                        <button onclick="selectAnswer(1, 2)" class="quiz-btn-1 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(1, 2)" class="quiz-btn-1 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             C) Warten, bis der Ball wie beim Padel von der Glaswand abprallt.
                         </button>
                     </div>
                 </div>
 
                 <!-- Frage 2 -->
-                <div class="glass-card p-5 rounded-xl border border-gray-800">
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
                     <p class="text-sm font-bold text-white mb-3">2. Wie handhabst du Saitenspannung und Schlägermaterial?</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                        <button onclick="selectAnswer(2, 0)" class="quiz-btn-2 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(2, 0)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             A) 11,5 kg Ashaway SuperNick XL, wöchentlich auf der Handfläche geprüft.
                         </button>
-                        <button onclick="selectAnswer(2, 1)" class="quiz-btn-2 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(2, 1)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             B) Die Werkssaiten, die vor drei Jahren beim Kauf drin waren.
                         </button>
-                        <button onclick="selectAnswer(2, 2)" class="quiz-btn-2 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(2, 2)" class="quiz-btn-2 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             C) Mein Schläger hat keine Saiten; er besteht aus solidem Fiberglas mit Löchern.
                         </button>
                     </div>
                 </div>
 
                 <!-- Frage 3 -->
-                <div class="glass-card p-5 rounded-xl border border-gray-800">
+                <div class="glass-card p-4 sm:p-5 rounded-xl border border-gray-800">
                     <p class="text-sm font-bold text-white mb-3">3. Wie viele aufeinanderfolgende gerade Rückhand-Drives schlägst du hinter das Aufschlagfeld, ohne das Blech zu treffen?</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                        <button onclick="selectAnswer(3, 0)" class="quiz-btn-3 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(3, 0)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             A) 50 oder mehr mit sauberer Rumpf- und Hüftdrehung.
                         </button>
-                        <button onclick="selectAnswer(3, 1)" class="quiz-btn-3 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(3, 1)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             B) Ungefähr 15, aber bei Ermüdung klappt mein Handgelenk ab.
                         </button>
-                        <button onclick="selectAnswer(3, 2)" class="quiz-btn-3 p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors">
+                        <button onclick="selectAnswer(3, 2)" class="quiz-btn-3 p-3.5 sm:p-3 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-left text-gray-300 border border-gray-700 transition-colors text-xs leading-relaxed">
                             C) Was genau ist das Blech?
                         </button>
                     </div>
@@ -708,11 +713,11 @@
 
             <!-- Tabs -->
             <div class="flex justify-center mb-10">
-                <div class="inline-flex p-1 rounded-xl bg-gray-950 border border-gray-800">
-                    <button id="tab-btn-league" onclick="switchTestimonialTab('league')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-squash-neon text-gray-950">
+                <div class="inline-flex flex-col sm:flex-row w-full sm:w-auto p-1 rounded-xl bg-gray-950 border border-gray-800 gap-1">
+                    <button id="tab-btn-league" onclick="switchTestimonialTab('league')" class="w-full sm:w-auto px-5 py-2.5 sm:py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-squash-neon text-gray-950">
                         Bayerische Ligaspieler
                     </button>
-                    <button id="tab-btn-unfiltered" onclick="switchTestimonialTab('unfiltered')" class="px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5">
+                    <button id="tab-btn-unfiltered" onclick="switchTestimonialTab('unfiltered')" class="w-full sm:w-auto justify-center px-5 py-2.5 sm:py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-all flex items-center gap-1.5">
                         <span>Ungeschminktes Vereinsleben</span>
                         <span class="w-2 h-2 rounded-full bg-squash-red animate-pulse"></span>
                     </button>
@@ -768,8 +773,8 @@
                     </div>
                     <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
                         <div>
-                            <p class="font-bold text-white text-sm">Julia M.</p>
-                            <p class="text-xs text-gray-500">Münchner Rangliste #3</p>
+                            <p class="font-bold text-white text-sm">Celine, 18 years old</p>
+                            <p class="text-xs text-gray-500">Bayerischer Jugendkader & Münchner Rangliste #3</p>
                         </div>
                         <span class="text-xs font-mono text-squash-neon bg-squash-neon/10 px-2 py-0.5 rounded">Verifiziert</span>
                     </div>
@@ -853,53 +858,53 @@
         
         <div class="space-y-4">
             <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
-                <button class="w-full text-left px-6 py-4 font-bold text-white flex justify-between items-center focus:outline-none" onclick="toggleFaq('faq1')">
-                    <span>Stellst du Schläger für Anfänger zur Verfügung?</span>
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq1')">
+                    <span>Nimmst du auch Anfänger auf den Court?</span>
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq1"></i>
                 </button>
-                <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq1">
-                    Nein. Wie ausdrücklich festgehalten, bringe ich blutigen Anfängern nicht bei, wie man einen Schläger hält. Wer keinen eigenen Schläger besitzt, ist für mein Training nicht bereit. Trainiere sechs Monate an einer Hallenwand, dann melde dich wieder.
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq1">
+                    Normalerweise verschwende ich keine Zeit damit, die Grundlagen des Griffs zu erklären. Anfänger können sich jedoch ab sofort auf <strong class="text-white">Einzelfallbasis</strong> für ein Probetraining bewerben. Ob eine Aufnahme in das reguläre Training erfolgt, entscheidet Gus erst nach der Proberunde – strikt basierend auf der Attraktivität und visuellen Präsenz der Person auf dem Court. Eigener Schläger ist dennoch Pflicht; nach meinem wird nicht gefragt.
                 </div>
             </div>
 
             <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
-                <button class="w-full text-left px-6 py-4 font-bold text-white flex justify-between items-center focus:outline-none" onclick="toggleFaq('faq2')">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq2')">
                     <span>Können wir während der Trainerstunde ein normales Match spielen?</span>
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq2"></i>
                 </button>
-                <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq2">
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq2">
                     Du bezahlst mich dafür, deine Mechanik zu korrigieren, nicht um dein Sparringspartner zu sein. Wir spielen gezielte Bedingungsspiele zur taktischen Belastung. Wer einfach nur planlos herumlaufen und ins Blech schlagen will, möge sich in einer Freizeit-Rangliste anmelden.
                 </div>
             </div>
 
             <div class="glass-panel rounded-xl overflow-hidden border border-red-950 hover:border-squash-red transition-colors">
-                <button class="w-full text-left px-6 py-4 font-bold text-white flex justify-between items-center focus:outline-none" onclick="toggleFaq('faq3')">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq3')">
                     <span class="flex items-center gap-2">
                         <i class="fas fa-circle-exclamation text-squash-red"></i> Trainierst du auch Padel? Die Glaskäfige sind doch direkt nebenan.
                     </span>
                     <i class="fas fa-chevron-down text-squash-red text-sm transition-transform duration-300" id="icon-faq3"></i>
                 </button>
-                <div class="px-6 pb-4 hidden text-red-300 text-sm font-medium bg-red-950/40 border-t border-red-900/50 pt-3 leading-relaxed" id="faq3">
+                <div class="px-4 sm:px-6 pb-4 hidden text-red-300 text-sm font-medium bg-red-950/40 border-t border-red-900/50 pt-3 leading-relaxed" id="faq3">
                     Padel ist Strandtennis im Hühnerstall. Es ist eine Freizeitbeschäftigung für Leute, die sich weigern zu schwitzen oder ordentliche Beinarbeit zu lernen. Zu sehen, wie diese Käfige wertvolle Parkettfläche in München rauben, versetzt mich in stille Wut. Frag mich das nie wieder.
                 </div>
             </div>
 
             <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
-                <button class="w-full text-left px-6 py-4 font-bold text-white flex justify-between items-center focus:outline-none" onclick="toggleFaq('faq4')">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq4')">
                     <span>Welche Schuhe sind auf dem Court vorgeschrieben?</span>
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq4"></i>
                 </button>
-                <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq4">
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq4">
                     Ausschließlich abriebfeste Hallenschuhe (Non-Marking mit Gummisohle oder spezieller Squash-Sohle). Wer mit Straßenschuhen oder dreckigen Laufschuhen das Parkett betritt, setzt keinen Fuß auf meinen Court.
                 </div>
             </div>
 
             <div class="glass-panel rounded-xl overflow-hidden border border-gray-800">
-                <button class="w-full text-left px-6 py-4 font-bold text-white flex justify-between items-center focus:outline-none" onclick="toggleFaq('faq5')">
+                <button class="w-full text-left px-4 sm:px-6 py-4 font-bold text-white flex justify-between items-center gap-3 focus:outline-none" onclick="toggleFaq('faq5')">
                     <span>Wo in München finden die Einheiten statt?</span>
                     <i class="fas fa-chevron-down text-gray-500 text-sm transition-transform duration-300" id="icon-faq5"></i>
                 </button>
-                <div class="px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq5">
+                <div class="px-4 sm:px-6 pb-4 hidden text-gray-400 text-sm leading-relaxed border-t border-gray-800/40 pt-3" id="faq5">
                     Das Training findet überwiegend bei Sports4You! in Sendling sowie im Park Club Nymphenburg statt. Die Courtgebühren sind je nach Tarif bereits enthalten.
                 </div>
             </div>
@@ -931,9 +936,9 @@
     </footer>
 
     <!-- Interaktives Blog-Lese-Modal -->
-    <div id="blog-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeBlogModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg p-2 transition-colors">
+    <div id="blog-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl p-5 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBlogModal()" aria-label="Close dialog" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-gray-800">
                 <i class="fas fa-times"></i>
             </button>
 
@@ -962,7 +967,7 @@
                 <div class="text-xs text-gray-500 font-mono">
                     <i class="fas fa-tag mr-1 text-squash-neon"></i> Rubrik: Notizen aus Court 1
                 </div>
-                <button onclick="closeBlogModal()" class="px-5 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-colors">
+                <button onclick="closeBlogModal()" class="w-full sm:w-auto text-center px-5 py-2.5 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-colors">
                     Bericht schließen
                 </button>
             </div>
@@ -970,9 +975,9 @@
     </div>
 
     <!-- Buchungs-Modal -->
-    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-5 sm:p-8 border border-gray-700 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" aria-label="Close booking modal" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-gray-800">
                 <i class="fas fa-times"></i>
             </button>
             
@@ -999,7 +1004,7 @@
                         <option value="intermediate">Fortgeschritten (Münchner Rangliste / C-Liga)</option>
                         <option value="advanced">Turnierspieler (Bayernliga A/B)</option>
                         <option value="veteran">Seniorenspieler (Fokus auf Gelenkschonung)</option>
-                        <option value="beginner">Vollständiger Anfänger (Achtung: Gus lehnt ab)</option>
+                        <option value="beginner">Vollständiger Anfänger (Einzelfallprüfung: Beurteilung nach Attraktivität nach Probetraining)</option>
                     </select>
                 </div>
 
@@ -1030,9 +1035,9 @@
     </div>
 
     <!-- Mateo Burner Account Überwachungs-Modal -->
-    <div id="burner-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-red-900/60 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeBurnerModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+    <div id="burner-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-5 sm:p-8 border border-red-900/60 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+            <button onclick="closeBurnerModal()" aria-label="Close burner modal" class="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 flex items-center justify-center rounded-lg bg-gray-900/80 text-gray-400 hover:text-white text-lg transition-colors border border-red-950">
                 <i class="fas fa-times"></i>
             </button>
 
@@ -1082,7 +1087,7 @@
             </div>
 
             <div class="mt-6 pt-4 border-t border-gray-800 text-center">
-                <button onclick="closeBurnerModal()" class="px-6 py-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono">
+                <button onclick="closeBurnerModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-gray-800 text-gray-300 hover:text-white text-xs font-mono">
                     Überwachungsprotokoll schließen
                 </button>
             </div>
@@ -1372,14 +1377,9 @@
                 return;
             }
 
+            let beginnerCasePending = false;
             if (levelVal === 'beginner') {
-                playSquashSound('tin');
-                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-amber-950/60 border border-amber-500 text-amber-300';
-                feedback.innerHTML = `
-                    <strong class="block text-amber-400 mb-1">⚠️ ANFRAGE PAUSIERT: KEINE ANFÄNGER</strong>
-                    "Ich bringe Anfängern nicht bei, wie man einen Schläger hält. Geh sechs Monate an die Wand schlagen, dann melde dich wieder."
-                `;
-                return;
+                beginnerCasePending = true;
             }
 
             // An Google Sheets senden, falls URL hinterlegt ist
@@ -1406,11 +1406,19 @@
             }
 
             playSquashSound('thwack');
-            feedback.className = 'p-4 rounded-xl text-xs font-mono bg-green-950/60 border border-squash-neon text-gray-200';
-            feedback.innerHTML = `
-                <strong class="block text-squash-neon mb-1">✅ ANFRAGE AN GUS ÜBERMITTELT</strong>
-                "Deine Angaben wurden erfasst. Wenn Gus deine Voraussetzungen billigt, erhältst du einen Court-Termin in Sendling oder Nymphenburg. Bring abriebfeste Gummisohlen mit und null Ausreden."
-            `;
+            if (beginnerCasePending) {
+                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-amber-950/60 border border-amber-500 text-amber-200';
+                feedback.innerHTML = `
+                    <strong class="block text-amber-400 mb-1">📋 ANFÄNGER-PROBETRAINING ERFASST (EINZELFALLPRÜFUNG)</strong>
+                    "Bewerbung für das Probetraining registriert. Zur Erinnerung: Die Fortführung des Trainings erfolgt auf strenger Einzelfallbasis und wird nach der Proberunde basierend auf Gus' Beurteilung deiner Attraktivität und Ausstrahlung auf dem Court entschieden."
+                `;
+            } else {
+                feedback.className = 'p-4 rounded-xl text-xs font-mono bg-green-950/60 border border-squash-neon text-gray-200';
+                feedback.innerHTML = `
+                    <strong class="block text-squash-neon mb-1">✅ ANFRAGE AN GUS ÜBERMITTELT</strong>
+                    "Deine Angaben wurden erfasst. Wenn Gus deine Voraussetzungen billigt, erhältst du einen Court-Termin in Sendling oder Nymphenburg. Bring abriebfeste Gummisohlen mit und null Ausreden."
+                `;
+            }
             submitBtn.disabled = true;
             submitBtn.innerText = "ANFRAGE ERFASST";
             submitBtn.classList.remove('bg-squash-neon');
